@@ -1,0 +1,7 @@
+url: https://github.com/becquerel/asgard-slider-module
+versions:
+
+    "0.1.0":
+        changed:
+            - Initial prototype
+            - Based on great work of Nicolas Widart on the Menu module
