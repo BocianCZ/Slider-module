@@ -2,10 +2,11 @@
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Slide extends Model
 {
-    use Translatable;
+    use Translatable, MediaRelation;
 
     public $translatedAttributes = ['title', 'uri', 'url', 'status'];
     protected $fillable = [

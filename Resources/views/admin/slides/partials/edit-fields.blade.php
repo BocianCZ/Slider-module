@@ -17,3 +17,9 @@
         <option value="_blank" {{ $slide->target == '_blank' ? 'selected' : '' }}>{{ trans('slider::slides.form.new tab') }}</option>
     </select>
 </div>
+
+@include('media::admin.fields.file-link', [
+    'entityClass' => 'Modules\\\\Slider\\\\Entities\\\\Slide',
+    'entityId' => $slide->id,
+    'zone' => 'slideImage'
+])

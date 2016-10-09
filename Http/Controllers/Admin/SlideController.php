@@ -9,6 +9,7 @@ use Modules\Slider\Http\Requests\CreateSlideRequest;
 use Modules\Slider\Http\Requests\UpdateSlideRequest;
 use Modules\Slider\Repositories\SlideRepository;
 use Modules\Page\Repositories\PageRepository;
+use Modules\Media\Repositories\FileRepository;
 
 class SlideController extends AdminBaseController
 {
@@ -16,16 +17,23 @@ class SlideController extends AdminBaseController
      * @var SlideRepository
      */
     private $slide;
+
     /**
      * @var PageRepository
      */
     private $page;
 
-    public function __construct(SlideRepository $slide, PageRepository $page)
+    /**
+     * @var FileRepository
+     */
+    private $file;
+
+    public function __construct(SlideRepository $slide, PageRepository $page, FileRepository $file)
     {
         parent::__construct();
         $this->slide = $slide;
         $this->page = $page;
+        $this->file = $file;
     }
 
     public function create(Slider $slider)
@@ -55,7 +63,8 @@ class SlideController extends AdminBaseController
             ->with([
                 'slider' => $slider,
                 'slide' => $slide,
-                'pages' => $pages
+                'pages' => $pages,
+                'slideImage' => $this->file->findFileByZoneForEntity('slideImage', $slide)
             ]);
     }
 
