@@ -23,7 +23,7 @@ class UpdateSliderRequest extends FormRequest
     {
         return [
             'name.required' => trans('menu::validation.name is required'),
-            'system_name.required' => trans('menu::validation.name is required')
+            'system_name.required' => trans('menu::validation.system name is required')
         ];
     }
 }
