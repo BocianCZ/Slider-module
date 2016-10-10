@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+use Modules\Slider\Entities\Slider;
 use Modules\Slider\Repositories\SliderRepository;
 
 class EloquentSliderRepository extends EloquentBaseRepository implements SliderRepository
@@ -33,5 +34,15 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
             $q->where('locale', "$locale");
             $q->where('status', 1);
         })->with('translations')->orderBy('created_at', 'DESC')->get();
+    }
+
+
+    /**
+     * @param string $systemName
+     * @return Slider
+     */
+    public function findBySystemName($systemName)
+    {
+        return $this->model->where('system_name', '=', $systemName)->first();
     }
 }

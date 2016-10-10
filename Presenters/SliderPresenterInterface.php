@@ -4,5 +4,9 @@ namespace Modules\Slider\Presenters;
 
 interface SliderPresenterInterface
 {
-    public function render();
+    /**
+     * @param string $sliderName
+     * @return string rendered slider
+     */
+    public function render($sliderName);
 }

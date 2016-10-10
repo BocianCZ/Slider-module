@@ -34,6 +34,21 @@ class Slide extends Model
      */
     public function setPageIdAttribute($value)
     {
-        $this->attributes['page_id'] = ! empty($value) ? $value : null;
+        $this->attributes['page_id'] = !empty($value) ? $value : null;
+    }
+
+    /**
+     * returns slider image src
+     * @return string|null full image path if image exists or null if no image is set
+     */
+    public function getImageUrl()
+    {
+        if (!empty($this->external_image_url)) {
+            return $this->external_image_url;
+        } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
+            return $this->files[0]->path;
+        } else {
+            return null;
+        }
     }
 }
