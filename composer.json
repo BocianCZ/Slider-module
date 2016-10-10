@@ -1,5 +1,5 @@
 {
-  "name": "bociancz/asgard-slider-module",
+  "name": "bociancz/slider-module",
   "type": "asgard-module",
   "description": "Slider module for AsgardCMS",
   "keywords": [
@@ -16,8 +16,8 @@
   ],
   "support": {
     "email": "info@bocian.cz",
-    "issues": "https://github.com/BocianCZ/asgard-slider-module/issues",
-    "source": "https://github.com/BocianCZ/asgard-slider-module"
+    "issues": "https://github.com/BocianCZ/slider-module/issues",
+    "source": "https://github.com/BocianCZ/slider-module"
   },
   "require": {
     "php": ">=5.5",
