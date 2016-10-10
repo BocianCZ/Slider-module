@@ -32,7 +32,12 @@ return [
         'caption' => 'Caption',
         'active' => 'Active',
         'uri' => 'URI',
-        'url' => 'URL'
+        'url' => 'URL',
+        'external image url' => 'External Image URL',
+        'placeholder' => [
+            'external image url' => 'http://www.example.com/link/to/image.jpg'
+        ]
+
     ],
     'navigation' => [
         'back to index' => 'Go back to the slider index'

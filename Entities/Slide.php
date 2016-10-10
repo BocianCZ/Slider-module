@@ -18,7 +18,8 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
-        'active'
+        'active',
+        'external_image_url'
     ];
     protected $table = 'slider__slides';
 

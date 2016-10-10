@@ -15,3 +15,9 @@
         <option value="_blank">{{ trans('slider::slides.form.new tab') }}</option>
     </select>
 </div>
+
+<div class="form-group{{ $errors->has("external_image_url") ? ' has-error' : '' }}">
+    {!! Form::label("external_image_url", trans('slider::slider.form.external image url')) !!}
+    {!! Form::text("external_image_url", Input::old("external_image_url"), ['class' => 'form-control', 'placeholder' => trans('slider::slider.form.placeholder.external image url')]) !!}
+    {!! $errors->first("external_image_url", '<span class="help-block">:message</span>') !!}
+</div>
