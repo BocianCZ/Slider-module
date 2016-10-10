@@ -5,3 +5,4 @@ versions:
         changed:
             - Initial prototype
             - Based on great work of Nicolas Widart on the Menu module
+            - Supports Bootstrap carousel with hardcoded defaults
