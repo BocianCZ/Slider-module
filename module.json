@@ -11,5 +11,8 @@
     "Modules\\Slider\\Providers\\RouteServiceProvider",
     "Modules\\Slider\\Providers\\SliderServiceProvider"
   ],
+  "aliases": {
+    "Slider": "Modules\\Slider\\Facades\\SliderFacade"
+  },
   "files": []
 }

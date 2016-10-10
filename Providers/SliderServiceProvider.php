@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Entities\Slide;
+use Modules\Slider\Presenters\Bootstrap\SliderPresenter;
 use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
 use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
 use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
@@ -43,7 +44,7 @@ class SliderServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return array('sliders');
     }
 
     /**
@@ -76,6 +77,12 @@ class SliderServiceProvider extends ServiceProvider
                 return new CacheSlideDecorator($repository);
             }
         );
+
+        $this->app->bind(
+            'Modules\Slider\Presenters\SliderPresenter', function() {
+                return new SliderPresenter();
+            }
+        );
     }
 
     /**
@@ -87,5 +94,11 @@ class SliderServiceProvider extends ServiceProvider
             return;
         }
 
+    }
+
+    public function render()
+    {
+        dump('RENDERING');
+        exit;
     }
 }
