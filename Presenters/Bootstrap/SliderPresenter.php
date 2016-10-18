@@ -2,18 +2,26 @@
 
 namespace Modules\Slider\Presenters\Bootstrap;
 use Illuminate\Support\Facades\View;
+use Modules\Slider\Entities\Slider;
 use Modules\Slider\Presenters\SliderPresenterInterface;
 use Modules\Slider\Presenters\AbstractSliderPresenter;
 
 class SliderPresenter extends AbstractSliderPresenter implements SliderPresenterInterface
 {
 
-    public function render($systemName)
+    /**
+     * @param string|Slider $slider
+     * @return string
+     */
+    public function render($slider)
     {
-        $slider = $this->sliderRepository->findBySystemName($systemName);
-        if (!$slider) {
-            return '';
+        if (!$slider instanceof Slider) {
+            $slider = $this->getSliderFromRepository($slider);
+            if (!$slider) {
+                return '';
+            }
         }
+
 
         $view = View::make('slider::frontend.bootstrap.slider')
             ->with([
@@ -23,4 +31,9 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
         return $view->render();
     }
 
+
+    private function getSliderFromRepository($systemName)
+    {
+        return $this->sliderRepository->findBySystemName($systemName);
+    }
 }
