@@ -1,29 +1,30 @@
 <?php
 
-namespace Modules\Slider\Presenters\Bootstrap;
+namespace Modules\Slider\Presenters;
 use Illuminate\Support\Facades\View;
 use Modules\Slider\Entities\Slider;
-use Modules\Slider\Presenters\SliderPresenterInterface;
-use Modules\Slider\Presenters\AbstractSliderPresenter;
 
 class SliderPresenter extends AbstractSliderPresenter implements SliderPresenterInterface
 {
 
     /**
+     * renders slider.
      * @param string|Slider $slider
-     * @return string
+     * pass Slider instance to render specific slider
+     * pass string to automatically retrieve slider from repository
+     * @param string $template blade template to render slider
+     * @return string rendered slider HTML
      */
-    public function render($slider)
+    public function render($slider, $template = 'slider::frontend.bootstrap.slider')
     {
         if (!$slider instanceof Slider) {
             $slider = $this->getSliderFromRepository($slider);
-            if (!$slider) {
-                return '';
-            }
+        }
+        if (!$slider) {
+            return '';
         }
 
-
-        $view = View::make('slider::frontend.bootstrap.slider')
+        $view = View::make($template)
             ->with([
                 'slider' => $slider
             ]);
@@ -32,6 +33,10 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
     }
 
 
+    /**
+     * @param $systemName
+     * @return Slider
+     */
     private function getSliderFromRepository($systemName)
     {
         return $this->sliderRepository->findBySystemName($systemName);
