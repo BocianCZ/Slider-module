@@ -23,7 +23,7 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
     }
 
     /**
-     * Get all online menus
+     * Get all available sliders
      * @return object
      */
     public function allOnline()
@@ -32,7 +32,7 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 
         return $this->model->whereHas('translations', function (Builder $q) use ($locale) {
             $q->where('locale', "$locale");
-            $q->where('status', 1);
+            $q->where('active', 1);
         })->with('translations')->orderBy('created_at', 'DESC')->get();
     }
 
