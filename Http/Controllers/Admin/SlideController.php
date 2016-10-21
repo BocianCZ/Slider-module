@@ -50,7 +50,7 @@ class SlideController extends AdminBaseController
     public function store(Slider $slider, CreateSlideRequest $request)
     {
         $this->slide->create($this->addSliderId($slider, $request));
-        flash(trans('menu::messages.menuitem created'));
+        flash(trans('slider::messages.slide created'));
 
         return redirect()->route('admin.slider.slider.edit', [$slider->id]);
     }
