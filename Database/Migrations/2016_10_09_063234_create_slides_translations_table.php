@@ -38,7 +38,7 @@ class CreateSlidesTranslationsTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('slides_translations');
+        Schema::drop('slider__slide_translations');
     }
 
 }

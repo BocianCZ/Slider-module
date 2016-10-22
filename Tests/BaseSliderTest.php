@@ -1,4 +1,4 @@
-<?php namespace Modules\Menu\Tests;
+<?php namespace Modules\Slider\Tests;
 
 use Faker\Factory;
 use Illuminate\Contracts\Console\Kernel;
@@ -8,22 +8,30 @@ use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
 use Modules\Core\Providers\CoreServiceProvider;
-use Modules\Menu\Providers\MenuServiceProvider;
-use Modules\Menu\Repositories\MenuItemRepository;
-use Modules\Menu\Repositories\MenuRepository;
+use Modules\Slider\Entities\Slide;
+use Modules\Slider\Entities\Slider;
+use Modules\Slider\Providers\SliderServiceProvider;
+use Modules\Slider\Repositories\SlideRepository;
+use Modules\Slider\Repositories\SliderRepository;
 use Orchestra\Testbench\TestCase;
 use Pingpong\Modules\ModulesServiceProvider;
 
-abstract class BaseMenuTest extends TestCase
+abstract class BaseSliderTest extends TestCase
 {
     /**
-     * @var MenuRepository
+     * @var SliderRepository
      */
-    protected $menu;
+    protected $sliderRepository;
+
     /**
-     * @var MenuItemRepository
+     * @var SlideRepository
      */
-    protected $menuItem;
+    protected $slideRepository;
+
+    /**
+     * @var \Faker\Generator
+     */
+    protected $faker;
 
     /**
      *
@@ -34,8 +42,9 @@ abstract class BaseMenuTest extends TestCase
 
         $this->resetDatabase();
 
-        $this->menu = app(MenuRepository::class);
-        $this->menuItem = app(MenuItemRepository::class);
+        $this->sliderRepository = app(SliderRepository::class);
+        $this->slideRepository = app(SlideRepository::class);
+        $this->faker = Factory::create();
     }
 
     protected function getPackageProviders($app)
@@ -43,7 +52,7 @@ abstract class BaseMenuTest extends TestCase
         return [
             ModulesServiceProvider::class,
             CoreServiceProvider::class,
-            MenuServiceProvider::class,
+            SliderServiceProvider::class,
             LaravelLocalizationServiceProvider::class,
             SidebarServiceProvider::class,
         ];
@@ -90,53 +99,71 @@ abstract class BaseMenuTest extends TestCase
         ]);
     }
 
-    public function createMenu($name, $title)
+    /**
+     * @param string $name
+     * @param string $systemName
+     * @return Slider
+     */
+    public function createSlider($name = 'Homepage Slider', $systemName = 'homepage')
     {
         $data = [
             'name' => $name,
-            'primary' => true,
-            'en' => [
-                'title' => $title,
-                'status' => 1,
-            ],
+            'system_name' => $systemName,
+            'active' => true
         ];
 
-        return $this->menu->create($data);
+        return $this->sliderRepository->create($data);
     }
 
     /**
-     * Create a menu item for the given menu and position
-     *
-     * @param  int    $menuId
-     * @param  int    $position
-     * @param  null   $parentId
-     * @return object
+     * @param string $name
+     * @param string $systemName
+     * @param int $slides number of slides to be created
+     * @return Slider
      */
-    protected function createMenuItemForMenu($menuId, $position, $parentId = null)
+    public function createSliderWithSlides($name = 'Homepage Slider', $systemName = 'homepage', $slides = 2)
     {
-        $faker = Factory::create();
+        $slider = $this->createSlider($name, $systemName);
 
-        $title = implode(' ', $faker->words(3));
+        for ($i = 1; $i <= $slides; $i++) {
+            $this->createSlideForSlider($slider->id, $i);
+        }
+
+        return $this->sliderRepository->find($slider->id);
+    }
+
+    /**
+     * Create a slide for the given Slider and position
+     *
+     * @param int $sliderId
+     * @param int $position
+     * @return Slide
+     */
+    protected function createSlideForSlider($sliderId, $position)
+    {
+        return $this->slideRepository->create($this->getSlideData($sliderId, $position));
+    }
+
+    /**
+     * @param int|null $sliderId
+     * @param int $position
+     * @return array
+     */
+    protected function getSlideData($sliderId = null, $position = 1)
+    {
+        $title = implode(' ', $this->faker->words(3));
+        $caption = implode(' ', $this->faker->words(10));
         $slug = Str::slug($title);
 
-        $data = [
-            'menu_id' => $menuId,
+        return [
+            'slider_id' => $sliderId,
             'position' => $position,
-            'parent_id' => $parentId,
-            'target' => '_self',
-            'module_name' => 'blog',
+            'external_image_url' => sprintf("https://placeholdit.imgix.net/~text?txtsize=50&txt=%s&w=800&h=200", $title),
             'en' => [
-                'status' => 1,
                 'title' => $title,
-                'uri' => $slug,
-            ],
-            'fr' => [
-                'status' => 1,
-                'title' => $title,
+                'caption' => $caption,
                 'uri' => $slug,
             ],
         ];
-
-        return $this->menuItem->create($data);
     }
 }

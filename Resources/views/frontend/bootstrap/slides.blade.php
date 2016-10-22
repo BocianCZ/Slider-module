@@ -1,6 +1,6 @@
 @foreach($slider->slides as $index => $slide)
     <div class="item @if($index === 0) active @endif ">
-        <img src="{{ $slide->getImageUrl() }}" alt="{{ $slide->title }}">
+        <img src="{!! $slide->getImageUrl() !!}" alt="{{ $slide->title }}">
         @if(!empty($slide->getLinkUrl()))
             <a href="{{ $slide->getLinkUrl() }}" target="{{ $slide->target }}">
         @endif
