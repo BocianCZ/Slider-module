@@ -1,5 +1,8 @@
 # Slider Module
 
+## Special Thanks
+to Nicolas Widart for AsgardCMS and his Menu Module, that was used as a foundation for the Slider Module.
+
 ## Installation
 You can install Slider module using composer:
 `composer require bociancz/slider-module`
