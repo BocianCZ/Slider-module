@@ -11,7 +11,14 @@ class Slide extends Model
 {
     use Translatable, MediaRelation;
 
-    public $translatedAttributes = ['title', 'uri', 'url', 'status'];
+    public $translatedAttributes = [
+        'title',
+        'caption',
+        'uri',
+        'url',
+        'status'
+    ];
+
     protected $fillable = [
         'slider_id',
         'page_id',
