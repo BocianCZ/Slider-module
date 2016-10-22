@@ -1,9 +1,11 @@
 <?php namespace Modules\Slider\Sidebar;
 
+use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
 use Modules\Core\Contracts\Authentication;
+use Modules\Slider\Repositories\SliderRepository;
 
 class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
 {
@@ -35,6 +37,10 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
                 $item->weight(3);
                 $item->icon('fa fa-bars');
                 $item->route('admin.slider.slider.index');
+                $item->badge(function (Badge $badge, SliderRepository $sliderRepository) {
+                    $badge->setClass('bg-green');
+                    $badge->setValue($sliderRepository->countAll());
+                });
                 $item->authorize(
                     $this->auth->hasAccess('slider.sliders.index')
                 );

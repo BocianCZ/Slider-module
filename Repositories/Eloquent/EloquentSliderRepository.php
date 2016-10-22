@@ -23,6 +23,15 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
     }
 
     /**
+     * Count all records
+     * @return int
+     */
+    public function countAll()
+    {
+        return $this->model->count();
+    }
+
+    /**
      * Get all available sliders
      * @return object
      */
