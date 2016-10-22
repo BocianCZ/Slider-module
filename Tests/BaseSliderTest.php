@@ -158,6 +158,7 @@ abstract class BaseSliderTest extends TestCase
         return [
             'slider_id' => $sliderId,
             'position' => $position,
+            'external_image_url' => sprintf("https://placeholdit.imgix.net/~text?txtsize=50&txt=%s&w=800&h=200", $title),
             'en' => [
                 'title' => $title,
                 'caption' => $caption,

@@ -35,6 +35,7 @@ class SliderServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerSliders();
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');
     }
 
     /**
@@ -90,4 +91,5 @@ class SliderServiceProvider extends ServiceProvider
             return;
         }
     }
+
 }

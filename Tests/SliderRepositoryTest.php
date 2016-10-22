@@ -2,7 +2,9 @@
 
 class SliderRepositoryTest extends BaseSliderTest
 {
-    /** @test */
+    /**
+     * @test
+     */
     public function can_create_slider()
     {
         $slider = $this->createSlider('Homepage Slider', 'homepage');
