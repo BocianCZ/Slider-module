@@ -19,6 +19,9 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
     {
         if (!$slider instanceof Slider) {
             $slider = $this->getSliderFromRepository($slider);
+            if ($slider->active == false) {    // inactive slider must not render
+                return '';
+            }
         }
         if (!$slider) {
             return '';
