@@ -37,12 +37,9 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
      */
     public function allOnline()
     {
-        $locale = App::getLocale();
-
-        return $this->model->whereHas('translations', function (Builder $q) use ($locale) {
-            $q->where('locale', "$locale");
-            $q->where('active', 1);
-        })->with('translations')->orderBy('created_at', 'DESC')->get();
+        return $this->model->where('active', '=', true)
+            ->orderBy('created_at', 'DESC')
+            ->get();
     }
 
 
