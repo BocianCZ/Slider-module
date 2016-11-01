@@ -1,19 +1,19 @@
 <?php
 return [
     'slider.sliders' => [
-        'index',
-        'create',
-        'store',
-        'edit',
-        'update',
-        'destroy',
+        'index' => 'index',
+        'create' => 'create',
+        'store' => 'store',
+        'edit' => 'edit',
+        'update' => 'update',
+        'destroy' => 'destroy',
     ],
     'slider.slides' => [
-        'index',
-        'create',
-        'store',
-        'edit',
-        'update',
-        'destroy',
+        'index' => 'index',
+        'create' => 'create',
+        'store' => 'store',
+        'edit' => 'edit',
+        'update' => 'update',
+        'destroy' => 'destroy'
     ],
 ];

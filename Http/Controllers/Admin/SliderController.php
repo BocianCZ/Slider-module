@@ -56,9 +56,7 @@ class SliderController extends AdminBaseController
     {
         $this->slider->create($request->all());
 
-        flash(trans('slider::messages.slider created'));
-
-        return redirect()->route('admin.slider.slider.index');
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('slider::messages.slider created'));
     }
 
     public function edit(Slider $slider)
@@ -78,17 +76,13 @@ class SliderController extends AdminBaseController
     {
         $this->slider->update($slider, $request->all());
 
-        flash(trans('slider::messages.slider updated'));
-
-        return redirect()->route('admin.slider.slider.index');
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('slider::messages.slider updated'));
     }
 
     public function destroy(Slider $slider)
     {
         $this->slider->destroy($slider);
 
-        flash(trans('menu::messages.slider deleted'));
-
-        return redirect()->route('admin.slider.slider.index');
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('menu::messages.slider deleted'));
     }
 }
