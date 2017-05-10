@@ -4,7 +4,7 @@ use Maatwebsite\Sidebar\Badge;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
-use Modules\Core\Contracts\Authentication;
+use Modules\User\Contracts\Authentication;
 use Modules\Slider\Repositories\SliderRepository;
 
 class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
