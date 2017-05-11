@@ -1,17 +1,17 @@
 {
-    "name": "Slider",
-    "alias": "slider",
-    "description": "Managing sliders",
-    "keywords": [],
-    "version": "0.1.0",
-    "active": 1,
-    "order": 1,
-    "providers": [
-        "Modules\\Slider\\Providers\\RouteServiceProvider",
-        "Modules\\Slider\\Providers\\SliderServiceProvider"
-    ],
-    "aliases": {
-        "Slider": "Modules\\Slider\\Facades\\SliderFacade"
-    },
-    "files": []
+  "name": "Slider",
+  "alias": "slider",
+  "description": "Managing sliders",
+  "keywords": [],
+  "version": "0.2.0",
+  "active": 1,
+  "order": 1,
+  "providers": [
+    "Modules\\Slider\\Providers\\RouteServiceProvider",
+    "Modules\\Slider\\Providers\\SliderServiceProvider"
+  ],
+  "aliases": {
+    "Slider": "Modules\\Slider\\Facades\\SliderFacade"
+  },
+  "files": []
 }

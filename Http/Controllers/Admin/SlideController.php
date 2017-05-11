@@ -51,7 +51,9 @@ class SlideController extends AdminBaseController
     {
         $this->slide->create($this->addSliderId($slider, $request));
 
-        return redirect()->route('admin.slider.slider.edit', [$slider->id])->withSuccess(trans('slider::messages.slide created'));
+        return redirect()
+            ->route('admin.slider.slider.edit', [$slider->id])
+            ->withSuccess(trans('slider::messages.slide created'));
     }
 
     public function edit(Slider $slider, Slide $slide)
@@ -71,7 +73,9 @@ class SlideController extends AdminBaseController
     {
         $this->slide->update($slide, $this->addSliderId($slider, $request));
 
-        return redirect()->route('admin.slider.slider.edit', [$slider->id])->withSuccess(trans('menu::messages.slide updated'));
+        return redirect()
+            ->route('admin.slider.slider.edit', [$slider->id])
+            ->withSuccess(trans('menu::messages.slide updated'));
     }
 
     /**
