@@ -18,7 +18,7 @@ class CacheSliderDecorator extends BaseCacheDecorator implements SliderRepositor
     }
 
     /**
-     * Get all online menus
+     * Get all online sliders
      * @return object
      */
     public function allOnline()

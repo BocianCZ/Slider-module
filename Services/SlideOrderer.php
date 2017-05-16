@@ -31,7 +31,7 @@ class SlideOrderer
     }
 
     /**
-     * Order recursively the menu items
+     * Order recursively the slider items
      * @param int   $position
      * @param array $item
      */
@@ -42,7 +42,7 @@ class SlideOrderer
     }
 
     /**
-     * Save the given position on the menu item
+     * Save the given position on the slider item
      * @param object $slide
      * @param int    $position
      */

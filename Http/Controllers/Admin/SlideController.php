@@ -75,7 +75,7 @@ class SlideController extends AdminBaseController
 
         return redirect()
             ->route('admin.slider.slider.edit', [$slider->id])
-            ->withSuccess(trans('menu::messages.slide updated'));
+            ->withSuccess(trans('slider::messages.slide updated'));
     }
 
     /**

@@ -83,7 +83,7 @@ $( document ).ready(function() {
     });
 });
 </script>
-<script src="{!! Module::asset('menu:js/jquery.nestable.js') !!}"></script>
+<script src="{!! Module::asset('slider:js/jquery.nestable.js') !!}"></script>
 <script>
 $( document ).ready(function() {
     $('.dd').nestable();
