@@ -72,7 +72,7 @@ class SlideController extends AdminBaseController
     {
         $this->slide->update($slide, $this->addSliderId($slider, $request));
 
-        flash(trans('menu::messages.slide updated'));
+        flash(trans('slider::messages.slide updated'));
 
         return redirect()->route('admin.slider.slider.edit', [$slider->id]);
     }
