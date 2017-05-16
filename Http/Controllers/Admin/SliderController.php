@@ -83,6 +83,6 @@ class SliderController extends AdminBaseController
     {
         $this->slider->destroy($slider);
 
-        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('menu::messages.slider deleted'));
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('slider::messages.slider deleted'));
     }
 }

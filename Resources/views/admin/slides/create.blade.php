@@ -6,7 +6,7 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><a href="{{ URL::route('admin.menu.menu.index') }}">{{ trans('slider::slider.breadcrumb.slider') }}</a></li>
+    <li><a href="{{ URL::route('dashboard.slide.index', $slider->id) }}">{{ trans('slider::slider.breadcrumb.slider') }}</a></li>
     <li>{{ trans('slider::slider.breadcrumb.create slide') }}</li>
 </ol>
 @stop
@@ -56,7 +56,7 @@
         <div class="box-footer">
             <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
             <button class="btn btn-default btn-flat" name="button" type="reset">{{ trans('core::core.button.reset') }}</button>
-            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.menu.menu.edit', [$slider->id])}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.slider.slider.edit', [$slider->id])}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
         </div>
     </div>
 </div>
