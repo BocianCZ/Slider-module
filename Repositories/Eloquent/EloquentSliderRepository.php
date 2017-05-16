@@ -10,16 +10,16 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
 {
     public function create($data)
     {
-        $menu = $this->model->create($data);
+        $slider = $this->model->create($data);
 
-        return $menu;
+        return $slider;
     }
 
-    public function update($menu, $data)
+    public function update($slider, $data)
     {
-        $menu->update($data);
+        $slider->update($data);
 
-        return $menu;
+        return $slider;
     }
 
     /**
