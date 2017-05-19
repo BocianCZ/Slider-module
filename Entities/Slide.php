@@ -9,6 +9,7 @@ use Modules\Page\Entities\Page;
 
 class Slide extends Model
 {
+
     use Translatable, MediaRelation;
 
     public $translatedAttributes = [
@@ -16,7 +17,7 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
-        'status'
+        'active'
     ];
 
     protected $fillable = [
@@ -31,6 +32,7 @@ class Slide extends Model
         'active',
         'external_image_url'
     ];
+
     protected $table = 'slider__slides';
 
     /**
@@ -43,10 +45,12 @@ class Slide extends Model
      */
     private $imageUrl;
 
+
     public function slider()
     {
         return $this->belongsTo('Modules\Slider\Entities\Slider');
     }
+
 
     /**
      * Check if page_id is empty and returning null instead empty string
@@ -54,8 +58,9 @@ class Slide extends Model
      */
     public function setPageIdAttribute($value)
     {
-        $this->attributes['page_id'] = !empty($value) ? $value : null;
+        $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -65,16 +70,17 @@ class Slide extends Model
         return $this->belongsTo(Page::class);
     }
 
+
     /**
      * returns slider image src
      * @return string|null full image path if image exists or null if no image is set
      */
     public function getImageUrl()
     {
-        if($this->imageUrl === null) {
-            if (!empty($this->external_image_url)) {
+        if ($this->imageUrl === null) {
+            if ( ! empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
-            } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
+            } elseif (isset($this->files[0]) && ! empty($this->files[0]->path)) {
                 $this->imageUrl = $this->files[0]->path;
             }
         }
@@ -90,12 +96,12 @@ class Slide extends Model
     public function getLinkUrl()
     {
         if ($this->linkUrl === null) {
-            if (!empty($this->url)) {
+            if ( ! empty($this->url)) {
                 $this->linkUrl = $this->url;
-            } elseif (!empty($this->uri)) {
-                $this->linkUrl = '/' . App::getLocale() . '/' . $this->uri;
-            } elseif (!empty($this->page)) {
-                $this->linkUrl = URL::route('page', ['uri' => $this->page->slug]);
+            } elseif ( ! empty($this->uri)) {
+                $this->linkUrl = '/'.App::getLocale().'/'.$this->uri;
+            } elseif ( ! empty($this->page)) {
+                $this->linkUrl = URL::route('page', [ 'uri' => $this->page->slug ]);
             }
         }
 
