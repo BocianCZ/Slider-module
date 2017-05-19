@@ -16,7 +16,7 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
-        'status'
+        'active'
     ];
 
     protected $fillable = [
