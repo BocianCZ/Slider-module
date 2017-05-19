@@ -54,7 +54,7 @@ class Slide extends Model
      */
     public function setPageIdAttribute($value)
     {
-        $this->attributes['page_id'] = ! empty($value) ? $value : null;
+        $this->attributes['page_id'] = !empty($value) ? $value : null;
     }
 
     /**
@@ -71,10 +71,10 @@ class Slide extends Model
      */
     public function getImageUrl()
     {
-        if ($this->imageUrl === null) {
-            if ( ! empty($this->external_image_url)) {
+        if($this->imageUrl === null) {
+            if (!empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
-            } elseif (isset($this->files[0]) && ! empty($this->files[0]->path)) {
+            } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
                 $this->imageUrl = $this->files[0]->path;
             }
         }
@@ -90,12 +90,12 @@ class Slide extends Model
     public function getLinkUrl()
     {
         if ($this->linkUrl === null) {
-            if ( ! empty($this->url)) {
+            if (!empty($this->url)) {
                 $this->linkUrl = $this->url;
-            } elseif ( ! empty($this->uri)) {
-                $this->linkUrl = '/'.App::getLocale().'/'.$this->uri;
-            } elseif ( ! empty($this->page)) {
-                $this->linkUrl = URL::route('page', [ 'uri' => $this->page->slug ]);
+            } elseif (!empty($this->uri)) {
+                $this->linkUrl = '/' . App::getLocale() . '/' . $this->uri;
+            } elseif (!empty($this->page)) {
+                $this->linkUrl = URL::route('page', ['uri' => $this->page->slug]);
             }
         }
 
