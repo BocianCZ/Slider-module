@@ -6,6 +6,5 @@ class SlideTranslation extends Model
 {
 
     public $fillable = [ 'title', 'caption', 'uri', 'url', 'active' ];
-
     protected $table = 'slider__slide_translations';
 }

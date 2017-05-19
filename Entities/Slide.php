@@ -9,7 +9,6 @@ use Modules\Page\Entities\Page;
 
 class Slide extends Model
 {
-
     use Translatable, MediaRelation;
 
     public $translatedAttributes = [
@@ -32,7 +31,6 @@ class Slide extends Model
         'active',
         'external_image_url'
     ];
-
     protected $table = 'slider__slides';
 
     /**
@@ -45,12 +43,10 @@ class Slide extends Model
      */
     private $imageUrl;
 
-
     public function slider()
     {
         return $this->belongsTo('Modules\Slider\Entities\Slider');
     }
-
 
     /**
      * Check if page_id is empty and returning null instead empty string
@@ -61,7 +57,6 @@ class Slide extends Model
         $this->attributes['page_id'] = ! empty($value) ? $value : null;
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -69,7 +64,6 @@ class Slide extends Model
     {
         return $this->belongsTo(Page::class);
     }
-
 
     /**
      * returns slider image src
