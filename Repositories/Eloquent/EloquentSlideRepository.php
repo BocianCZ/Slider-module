@@ -23,12 +23,11 @@ class EloquentSlideRepository extends EloquentBaseRepository implements SlideRep
         return $slide;
     }
 
-
-    public function update($menuItem, $data)
+    public function update($sliderItem, $data)
     {
-        $menuItem->update($data);
+        $sliderItem->update($data);
 
-        return $menuItem;
+        return $sliderItem;
     }
 
 }

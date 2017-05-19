@@ -33,7 +33,7 @@ class SliderServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register all online menus on the Pingpong/Menu package
+     * Register all online sliders on the Pingpong/Menu package
      */
     public function boot()
     {

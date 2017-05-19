@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\URL;
 class SliderRenderer
 {
     /**
-     * @var int Id of the menu to render
+     * @var int Id of the slider to render
      */
     protected $sliderId;
     /**
