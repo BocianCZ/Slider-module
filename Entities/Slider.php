@@ -14,6 +14,6 @@ class Slider extends Model
 
     public function slides()
     {
-        return $this->hasMany('Modules\Slider\Entities\Slide')->orderBy('position', 'asc');
+        return $this->hasMany(Slide::class)->orderBy('position', 'asc');
     }
 }

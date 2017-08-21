@@ -38,3 +38,10 @@
         {{ trans('slider::slider.form.active') }}
     </label>
 </div>
+
+<div class="form-group{{ $errors->has("{$lang}[custom_html]") ? ' has-error' : '' }}">
+    {!! Form::label("{$lang}[custom_html]", trans('slider::slides.form.custom html')) !!}
+    <?php $old = $slide->hasTranslation($lang) ? $slide->translate($lang)->custom_html : '' ?>
+    {!! Form::textarea("{$lang}[custom_html]", old("{$lang}[custom_html]", $old), ['class' => 'form-control ckeditor', 'placeholder' => trans('slider::slides.form.custom html')]) !!}
+    {!! $errors->first("{$lang}[custom_html]", '<span class="help-block">:message</span>') !!}
+</div>
