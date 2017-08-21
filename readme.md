@@ -1,5 +1,10 @@
 # Slider Module
 
+## IMPORTANT: Slider Module for AsgardCMS v1 is no longer maintained
+default branch (`2.0`) works with Asgard v2. For Asgard v1, use `0.x` tagged releases or `master` branch.
+I will be still merging bug fixes if I run into any or get a PR, but all new features will be implemented for v2 only.
+Please upgrade Asgard to v2 if you wish to use the latest features (see changelog in releases for details)
+
 ## Special Thanks
 to Nicolas Widart for AsgardCMS and his Menu Module, that was used as a foundation for the Slider Module.
 
