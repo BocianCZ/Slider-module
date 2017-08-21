@@ -32,7 +32,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-            $group->weight(100);
             $group->item(trans('slider::slider.title'), function (Item $item) {
                 $item->weight(3);
                 $item->icon('fa fa-bars');
