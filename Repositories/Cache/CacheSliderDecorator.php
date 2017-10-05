@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Repositories\Cache;
+<?php
+
+namespace Modules\Slider\Repositories\Cache;
 
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 use Modules\Slider\Repositories\SliderRepository;
@@ -25,7 +27,9 @@ class CacheSliderDecorator extends BaseCacheDecorator implements SliderRepositor
     {
         return $this->cache
             ->tags($this->entityName, 'global')
-            ->remember("{$this->locale}.{$this->entityName}.allOnline", $this->cacheTime,
+            ->remember(
+                "{$this->locale}.{$this->entityName}.allOnline",
+                $this->cacheTime,
                 function () {
                     return $this->repository->allOnline();
                 }

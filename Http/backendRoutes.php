@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-
 $router->bind('slider', function ($id) {
     return app(\Modules\Slider\Repositories\SliderRepository::class)->find($id);
 });

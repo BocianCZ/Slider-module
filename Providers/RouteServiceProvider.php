@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Providers;
+<?php
+
+namespace Modules\Slider\Providers;
 
 use Modules\Core\Providers\RoutingServiceProvider as CoreRoutingServiceProvider;
 

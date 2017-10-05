@@ -7,7 +7,7 @@ return [
         'target' => 'Target',
         'same tab' => 'Same tab',
         'new tab' => 'New tab',
-        'custom html' => 'Custom HTML'
+        'custom html' => 'Custom HTML',
     ],
     'link-type' => [
         'link type' => 'Linktype',

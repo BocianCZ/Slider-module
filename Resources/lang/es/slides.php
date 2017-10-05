@@ -6,7 +6,7 @@ return [
         'module' => 'Módulo',
         'target' => 'Destino',
         'same tab' => 'Mismo tab',
-        'new tab' => 'Nuevo tab'
+        'new tab' => 'Nuevo tab',
     ],
     'link-type' => [
         'link type' => 'Tipo de enlace',

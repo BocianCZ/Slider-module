@@ -1,6 +1,7 @@
-<?php namespace Modules\Slider\Services;
+<?php
 
-use Modules\Slider\Entities\Slide;
+namespace Modules\Slider\Services;
+
 use Modules\Slider\Repositories\SlideRepository;
 
 class SlideOrderer

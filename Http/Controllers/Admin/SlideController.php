@@ -1,15 +1,16 @@
-<?php namespace Modules\Slider\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Slider\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Slider\Entities\Slider;
+use Modules\Media\Repositories\FileRepository;
+use Modules\Page\Repositories\PageRepository;
 use Modules\Slider\Entities\Slide;
+use Modules\Slider\Entities\Slider;
 use Modules\Slider\Http\Requests\CreateSlideRequest;
 use Modules\Slider\Http\Requests\UpdateSlideRequest;
 use Modules\Slider\Repositories\SlideRepository;
-use Modules\Page\Repositories\PageRepository;
-use Modules\Media\Repositories\FileRepository;
 
 class SlideController extends AdminBaseController
 {
@@ -43,7 +44,7 @@ class SlideController extends AdminBaseController
         return view('slider::admin.slides.create')
             ->with([
                 'slider' => $slider,
-                'pages' => $pages
+                'pages' => $pages,
             ]);
     }
 
@@ -65,7 +66,7 @@ class SlideController extends AdminBaseController
                 'slider' => $slider,
                 'slide' => $slide,
                 'pages' => $pages,
-                'slideImage' => $this->file->findFileByZoneForEntity('slideImage', $slide)
+                'slideImage' => $this->file->findFileByZoneForEntity('slideImage', $slide),
             ]);
     }
 

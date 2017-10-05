@@ -1,7 +1,8 @@
-<?php namespace Modules\Slider\Tests;
+<?php
+
+namespace Modules\Slider\Tests;
 
 use Faker\Factory;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageServiceProvider;
@@ -16,8 +17,8 @@ use Modules\Slider\Providers\SliderServiceProvider;
 use Modules\Slider\Repositories\SlideRepository;
 use Modules\Slider\Repositories\SliderRepository;
 use Modules\Tag\Providers\TagServiceProvider;
-use Orchestra\Testbench\TestCase;
 use Nwidart\Modules\LaravelModulesServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 abstract class BaseSliderTest extends TestCase
 {
@@ -118,7 +119,7 @@ abstract class BaseSliderTest extends TestCase
         $data = [
             'name' => $name,
             'system_name' => $systemName,
-            'active' => true
+            'active' => true,
         ];
 
         return $this->sliderRepository->create($data);

@@ -1,18 +1,19 @@
-<?php namespace Modules\Slider\Providers;
+<?php
+
+namespace Modules\Slider\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
-use Modules\Slider\Entities\Slider;
-use Modules\Slider\Entities\Slide;
-use Modules\Slider\Events\Handlers\RegisterSliderSidebar;
-use Modules\Slider\Presenters\SliderPresenter;
-use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
-use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
-use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
-use Modules\Slider\Repositories\Eloquent\EloquentSlideRepository;
 use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\Slider\Entities\Slide;
+use Modules\Slider\Entities\Slider;
+use Modules\Slider\Events\Handlers\RegisterSliderSidebar;
+use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
+use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
+use Modules\Slider\Repositories\Eloquent\EloquentSlideRepository;
+use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
 
 class SliderServiceProvider extends ServiceProvider
 {
@@ -106,5 +107,4 @@ class SliderServiceProvider extends ServiceProvider
             return;
         }
     }
-
 }

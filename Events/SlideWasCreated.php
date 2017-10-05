@@ -6,7 +6,6 @@ use Modules\Media\Contracts\StoringMedia;
 
 class SlideWasCreated implements StoringMedia
 {
-
     /**
      * @var array
      */
@@ -17,13 +16,11 @@ class SlideWasCreated implements StoringMedia
      */
     public $post;
 
-
     public function __construct($post, array $data)
     {
         $this->data = $data;
         $this->post = $post;
     }
-
 
     /**
      * Return the entity
@@ -33,7 +30,6 @@ class SlideWasCreated implements StoringMedia
     {
         return $this->post;
     }
-
 
     /**
      * Return the ALL data sent

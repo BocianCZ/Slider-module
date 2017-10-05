@@ -1,4 +1,5 @@
 <?php
+
 return [
     'slider.sliders' => [
         'index' => 'index',
@@ -14,6 +15,6 @@ return [
         'store' => 'store',
         'edit' => 'edit',
         'update' => 'update',
-        'destroy' => 'destroy'
+        'destroy' => 'destroy',
     ],
 ];

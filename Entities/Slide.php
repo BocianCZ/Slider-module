@@ -1,10 +1,12 @@
-<?php namespace Modules\Slider\Entities;
+<?php
+
+namespace Modules\Slider\Entities;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Media\Support\Traits\MediaRelation;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Page\Entities\Page;
 
 class Slide extends Model
@@ -73,7 +75,7 @@ class Slide extends Model
      */
     public function getImageUrl()
     {
-        if($this->imageUrl === null) {
+        if ($this->imageUrl === null) {
             if (!empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
             } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
@@ -83,7 +85,6 @@ class Slide extends Model
 
         return $this->imageUrl;
     }
-
 
     /**
      * returns slider link URL

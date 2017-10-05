@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Slider\Http\Controllers\Admin;
 
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Slider\Entities\Slider;
@@ -29,8 +31,7 @@ class SliderController extends AdminBaseController
         SliderRepository $slider,
         SlideRepository $slide,
         SliderRenderer $sliderRenderer
-    )
-    {
+    ) {
         parent::__construct();
         $this->slider = $slider;
         $this->slide = $slide;
@@ -43,7 +44,7 @@ class SliderController extends AdminBaseController
 
         return view('slider::admin.sliders.index')
             ->with([
-                'sliders' => $sliders
+                'sliders' => $sliders,
             ]);
     }
 
@@ -67,9 +68,8 @@ class SliderController extends AdminBaseController
         return view('slider::admin.sliders.edit')
             ->with([
                 'slider' => $slider,
-                'slides' => $sliderStructure
+                'slides' => $sliderStructure,
             ]);
-
     }
 
     public function update(Slider $slider, UpdateSliderRequest $request)

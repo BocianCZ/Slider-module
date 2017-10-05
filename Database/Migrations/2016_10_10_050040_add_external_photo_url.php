@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class AddExternalPhotoUrl extends Migration {
-
+class AddExternalPhotoUrl extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,8 +12,7 @@ class AddExternalPhotoUrl extends Migration {
      */
     public function up()
     {
-        Schema::table('slider__slides', function(Blueprint $table)
-        {
+        Schema::table('slider__slides', function (Blueprint $table) {
             $table->string('external_image_url', 255)->nullable()->default(null);
         });
     }
@@ -25,10 +24,8 @@ class AddExternalPhotoUrl extends Migration {
      */
     public function down()
     {
-        Schema::table('slider__slides', function(Blueprint $table)
-        {
+        Schema::table('slider__slides', function (Blueprint $table) {
             $table->dropColumn('external_image_url');
         });
     }
-
 }

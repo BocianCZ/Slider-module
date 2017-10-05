@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Entities;
+<?php
+
+namespace Modules\Slider\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -7,7 +9,7 @@ class Slider extends Model
     protected $fillable = [
         'name',
         'system_name',
-        'active'
+        'active',
     ];
 
     protected $table = 'slider__sliders';

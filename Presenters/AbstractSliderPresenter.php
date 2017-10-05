@@ -6,7 +6,6 @@ use Modules\Slider\Repositories\SliderRepository;
 
 abstract class AbstractSliderPresenter implements SliderPresenterInterface
 {
-
     /**
      * @var SliderRepository
      */
@@ -20,5 +19,4 @@ abstract class AbstractSliderPresenter implements SliderPresenterInterface
     {
         $this->sliderRepository = $sliderRepository;
     }
-
 }

@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-
 $router->group(['prefix' => '/slide'], function (Router $router) {
     $router->post('/update', [
         'as' => 'api.slide.update',
@@ -13,6 +12,6 @@ $router->group(['prefix' => '/slide'], function (Router $router) {
     $router->post('/delete', [
         'as' => 'api.slide.delete',
         'uses' => 'SlideController@delete',
-        'middleware' => 'token-can:slider.slides.destroy'
+        'middleware' => 'token-can:slider.slides.destroy',
     ]);
 });
