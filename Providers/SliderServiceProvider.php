@@ -9,9 +9,12 @@ use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
 use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
 use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
 use Modules\Slider\Repositories\Eloquent\EloquentSlideRepository;
+use Modules\Core\Traits\CanPublishConfiguration;
 
 class SliderServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -34,6 +37,9 @@ class SliderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishConfig('slider', 'config');
+        $this->publishConfig('slider', 'permissions');
+
         $this->registerSliders();
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');
     }

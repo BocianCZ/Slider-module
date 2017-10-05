@@ -16,7 +16,8 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
-        'active'
+        'active',
+        'custom_html',
     ];
 
     protected $fillable = [
@@ -29,7 +30,8 @@ class Slide extends Model
         'uri',
         'url',
         'active',
-        'external_image_url'
+        'external_image_url',
+        'custom_html',
     ];
     protected $table = 'slider__slides';
 
@@ -45,7 +47,7 @@ class Slide extends Model
 
     public function slider()
     {
-        return $this->belongsTo('Modules\Slider\Entities\Slider');
+        return $this->belongsTo(Slider::class);
     }
 
     /**
@@ -93,9 +95,9 @@ class Slide extends Model
             if (!empty($this->url)) {
                 $this->linkUrl = $this->url;
             } elseif (!empty($this->uri)) {
-                $this->linkUrl = '/' . App::getLocale() . '/' . $this->uri;
+                $this->linkUrl = '/' . locale() . '/' . $this->uri;
             } elseif (!empty($this->page)) {
-                $this->linkUrl = URL::route('page', ['uri' => $this->page->slug]);
+                $this->linkUrl = route('page', ['uri' => $this->page->slug]);
             }
         }
 
