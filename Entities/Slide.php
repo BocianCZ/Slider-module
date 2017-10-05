@@ -95,7 +95,7 @@ class Slide extends Model
             if (!empty($this->url)) {
                 $this->linkUrl = $this->url;
             } elseif (!empty($this->uri)) {
-                $this->linkUrl = '/' . locale() . '/' . $this->uri;
+                $this->linkUrl = '/' . app()->getLocale() . '/' . $this->uri;
             } elseif (!empty($this->page)) {
                 $this->linkUrl = route('page', ['uri' => $this->page->slug]);
             }

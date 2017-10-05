@@ -14,7 +14,7 @@ class AddCustomHtmlToSlides extends Migration
     public function up()
     {
         Schema::table('slider__slide_translations', function (Blueprint $table) {
-            $table->text('custom_html');
+            $table->text('custom_html')->nullable();
         });
     }
 

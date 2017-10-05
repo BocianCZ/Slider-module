@@ -41,6 +41,7 @@ class SliderServiceProvider extends ServiceProvider
         $this->publishConfig('slider', 'permissions');
 
         $this->registerSliders();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');
     }
 
