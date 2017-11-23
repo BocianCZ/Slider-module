@@ -41,5 +41,15 @@ return [
     ],
     'navigation' => [
         'back to index' => 'Go back to the slider index'
+    ],
+    'messages' => [
+        'title' => 'The Title is required.',
+        'caption' => 'The Caption is required.',
+    ],
+    'validation' => [
+        'attributes' => [
+            'title' => 'title',
+            'caption' => 'caption',
+        ],
     ]
 ];
