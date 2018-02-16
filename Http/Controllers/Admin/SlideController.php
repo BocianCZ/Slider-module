@@ -1,15 +1,16 @@
-<?php namespace Modules\Slider\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Slider\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
-use Modules\Slider\Entities\Slider;
+use Modules\Media\Repositories\FileRepository;
+use Modules\Page\Repositories\PageRepository;
 use Modules\Slider\Entities\Slide;
+use Modules\Slider\Entities\Slider;
 use Modules\Slider\Http\Requests\CreateSlideRequest;
 use Modules\Slider\Http\Requests\UpdateSlideRequest;
 use Modules\Slider\Repositories\SlideRepository;
-use Modules\Page\Repositories\PageRepository;
-use Modules\Media\Repositories\FileRepository;
 
 class SlideController extends AdminBaseController
 {
@@ -43,16 +44,17 @@ class SlideController extends AdminBaseController
         return view('slider::admin.slides.create')
             ->with([
                 'slider' => $slider,
-                'pages' => $pages
+                'pages' => $pages,
             ]);
     }
 
     public function store(Slider $slider, CreateSlideRequest $request)
     {
         $this->slide->create($this->addSliderId($slider, $request));
-        flash(trans('slider::messages.slide created'));
 
-        return redirect()->route('admin.slider.slider.edit', [$slider->id]);
+        return redirect()
+            ->route('admin.slider.slider.edit', [$slider->id])
+            ->withSuccess(trans('slider::messages.slide created'));
     }
 
     public function edit(Slider $slider, Slide $slide)
@@ -64,7 +66,7 @@ class SlideController extends AdminBaseController
                 'slider' => $slider,
                 'slide' => $slide,
                 'pages' => $pages,
-                'slideImage' => $this->file->findFileByZoneForEntity('slideImage', $slide)
+                'slideImage' => $this->file->findFileByZoneForEntity('slideImage', $slide),
             ]);
     }
 
@@ -72,9 +74,9 @@ class SlideController extends AdminBaseController
     {
         $this->slide->update($slide, $this->addSliderId($slider, $request));
 
-        flash(trans('slider::messages.slide updated'));
-
-        return redirect()->route('admin.slider.slider.edit', [$slider->id]);
+        return redirect()
+            ->route('admin.slider.slider.edit', [$slider->id])
+            ->withSuccess(trans('slider::messages.slide updated'));
     }
 
     /**

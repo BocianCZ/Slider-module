@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Repositories;
+<?php
+
+namespace Modules\Slider\Repositories;
 
 use Modules\Core\Repositories\BaseRepository;
 

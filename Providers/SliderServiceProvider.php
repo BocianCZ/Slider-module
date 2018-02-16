@@ -1,17 +1,24 @@
-<?php namespace Modules\Slider\Providers;
+<?php
+
+namespace Modules\Slider\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Modules\Slider\Entities\Slider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Slider\Entities\Slide;
-use Modules\Slider\Presenters\SliderPresenter;
-use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
+use Modules\Slider\Entities\Slider;
+use Modules\Slider\Events\Handlers\RegisterSliderSidebar;
 use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
-use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
+use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
 use Modules\Slider\Repositories\Eloquent\EloquentSlideRepository;
+use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
 
 class SliderServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -27,6 +34,11 @@ class SliderServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('slider', RegisterSliderSidebar::class)
+        );
     }
 
     /**
@@ -34,7 +46,11 @@ class SliderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishConfig('slider', 'config');
+        $this->publishConfig('slider', 'permissions');
+
         $this->registerSliders();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');
     }
 
@@ -91,5 +107,4 @@ class SliderServiceProvider extends ServiceProvider
             return;
         }
     }
-
 }

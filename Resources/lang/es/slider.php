@@ -23,7 +23,7 @@ return [
     'table' => [
         'name' => 'Nombre',
         'title' => 'Título',
-        'system name' => 'Nombre de sistema'
+        'system name' => 'Nombre de sistema',
     ],
     'form' => [
         'title' => 'Título',
@@ -35,11 +35,11 @@ return [
         'url' => 'URL',
         'external image url' => 'URL de imagen externa',
         'placeholder' => [
-            'external image url' => 'http://www.example.com/link/to/image.jpg'
-        ]
+            'external image url' => 'http://www.example.com/link/to/image.jpg',
+        ],
 
     ],
     'navigation' => [
-        'back to index' => 'Volver al índice del slider'
-    ]
+        'back to index' => 'Volver al índice del slider',
+    ],
 ];

@@ -1,7 +1,7 @@
-<?php namespace Modules\Slider\Repositories\Eloquent;
+<?php
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\App;
+namespace Modules\Slider\Repositories\Eloquent;
+
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Repositories\SliderRepository;
@@ -41,7 +41,6 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
             ->orderBy('created_at', 'DESC')
             ->get();
     }
-
 
     /**
      * @param string $systemName

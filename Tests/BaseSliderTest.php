@@ -1,20 +1,24 @@
-<?php namespace Modules\Slider\Tests;
+<?php
+
+namespace Modules\Slider\Tests;
 
 use Faker\Factory;
-use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageServiceProvider;
 use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
 use Modules\Core\Providers\CoreServiceProvider;
+use Modules\Media\Providers\MediaServiceProvider;
 use Modules\Slider\Entities\Slide;
 use Modules\Slider\Entities\Slider;
 use Modules\Slider\Providers\SliderServiceProvider;
 use Modules\Slider\Repositories\SlideRepository;
 use Modules\Slider\Repositories\SliderRepository;
+use Modules\Tag\Providers\TagServiceProvider;
+use Nwidart\Modules\LaravelModulesServiceProvider;
 use Orchestra\Testbench\TestCase;
-use Pingpong\Modules\ModulesServiceProvider;
 
 abstract class BaseSliderTest extends TestCase
 {
@@ -50,8 +54,12 @@ abstract class BaseSliderTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            ModulesServiceProvider::class,
+            LaravelModulesServiceProvider::class,
             CoreServiceProvider::class,
+            \Modules\Media\Image\ImageServiceProvider::class,
+            MediaServiceProvider::class,
+            ImageServiceProvider::class,
+            TagServiceProvider::class,
             SliderServiceProvider::class,
             LaravelLocalizationServiceProvider::class,
             SidebarServiceProvider::class,
@@ -80,22 +88,24 @@ abstract class BaseSliderTest extends TestCase
 
     private function resetDatabase()
     {
-        // Relative to the testbench app folder: vendors/orchestra/testbench/src/fixture
-        $migrationsPath = 'Database/Migrations';
-        $artisan = $this->app->make(Kernel::class);
-        // Makes sure the migrations table is created
-        $artisan->call('migrate', [
+        $this->artisan('migrate', [
             '--database' => 'sqlite',
-            '--path'     => $migrationsPath,
         ]);
         // We empty all tables
-        $artisan->call('migrate:reset', [
+        $this->artisan('migrate:reset', [
             '--database' => 'sqlite',
         ]);
         // Migrate
-        $artisan->call('migrate', [
+        $this->artisan('migrate', [
             '--database' => 'sqlite',
-            '--path'     => $migrationsPath,
+        ]);
+        $this->artisan('migrate', [
+            '--database' => 'sqlite',
+            '--path'     => 'Modules/Media/Database/Migrations',
+        ]);
+        $this->artisan('migrate', [
+            '--database' => 'sqlite',
+            '--path'     => 'Modules/Tag/Database/Migrations',
         ]);
     }
 
@@ -109,7 +119,7 @@ abstract class BaseSliderTest extends TestCase
         $data = [
             'name' => $name,
             'system_name' => $systemName,
-            'active' => true
+            'active' => true,
         ];
 
         return $this->sliderRepository->create($data);

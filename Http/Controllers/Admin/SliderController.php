@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Slider\Http\Controllers\Admin;
 
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Slider\Entities\Slider;
@@ -29,8 +31,7 @@ class SliderController extends AdminBaseController
         SliderRepository $slider,
         SlideRepository $slide,
         SliderRenderer $sliderRenderer
-    )
-    {
+    ) {
         parent::__construct();
         $this->slider = $slider;
         $this->slide = $slide;
@@ -43,7 +44,7 @@ class SliderController extends AdminBaseController
 
         return view('slider::admin.sliders.index')
             ->with([
-                'sliders' => $sliders
+                'sliders' => $sliders,
             ]);
     }
 
@@ -56,9 +57,7 @@ class SliderController extends AdminBaseController
     {
         $this->slider->create($request->all());
 
-        flash(trans('slider::messages.slider created'));
-
-        return redirect()->route('admin.slider.slider.index');
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('slider::messages.slider created'));
     }
 
     public function edit(Slider $slider)
@@ -69,26 +68,21 @@ class SliderController extends AdminBaseController
         return view('slider::admin.sliders.edit')
             ->with([
                 'slider' => $slider,
-                'slides' => $sliderStructure
+                'slides' => $sliderStructure,
             ]);
-
     }
 
     public function update(Slider $slider, UpdateSliderRequest $request)
     {
         $this->slider->update($slider, $request->all());
 
-        flash(trans('slider::messages.slider updated'));
-
-        return redirect()->route('admin.slider.slider.index');
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('slider::messages.slider updated'));
     }
 
     public function destroy(Slider $slider)
     {
         $this->slider->destroy($slider);
 
-        flash(trans('slider::messages.slider deleted'));
-
-        return redirect()->route('admin.slider.slider.index');
+        return redirect()->route('admin.slider.slider.index')->withSuccess(trans('slider::messages.slider deleted'));
     }
 }

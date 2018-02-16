@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateSlidesTranslationsTable extends Migration {
-
+class CreateSlidesTranslationsTable extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,8 +12,7 @@ class CreateSlidesTranslationsTable extends Migration {
      */
     public function up()
     {
-        Schema::create('slider__slide_translations', function(Blueprint $table)
-        {
+        Schema::create('slider__slide_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
@@ -21,7 +20,7 @@ class CreateSlidesTranslationsTable extends Migration {
             $table->string('locale')->index();
 
             $table->string('title');
-            $table->string('caption');
+            $table->string('caption')->nullable();
             $table->string('url')->nullable();
             $table->string('uri')->nullable();
             $table->boolean('active')->default(false);
@@ -40,5 +39,4 @@ class CreateSlidesTranslationsTable extends Migration {
     {
         Schema::drop('slider__slide_translations');
     }
-
 }

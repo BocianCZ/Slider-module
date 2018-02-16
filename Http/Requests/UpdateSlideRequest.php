@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Http\Requests;
+<?php
+
+namespace Modules\Slider\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -43,7 +43,7 @@ class SlideRepositoryTest extends BaseSliderTest
      */
     public function can_delete_slide()
     {
-        $slideCount = rand(1,5);
+        $slideCount = rand(1, 5);
         $slider = $this->createSliderWithSlides('Homepage Slider', 'homepage_slider', $slideCount);
         $this->assertEquals($slideCount, count($slider->slides));
 
@@ -54,5 +54,4 @@ class SlideRepositoryTest extends BaseSliderTest
         $sliderRetrievedAgain = $this->sliderRepository->find($slider->id);
         $this->assertEquals(0, count($sliderRetrievedAgain->slides));
     }
-
 }

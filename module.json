@@ -2,9 +2,8 @@
   "name": "Slider",
   "alias": "slider",
   "description": "Managing sliders",
-  "keywords": [
-  ],
-  "version": "0.1.0",
+  "keywords": [],
+  "version": "0.2.0",
   "active": 1,
   "order": 1,
   "providers": [

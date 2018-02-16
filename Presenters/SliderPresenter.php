@@ -1,12 +1,12 @@
 <?php
 
 namespace Modules\Slider\Presenters;
+
 use Illuminate\Support\Facades\View;
 use Modules\Slider\Entities\Slider;
 
 class SliderPresenter extends AbstractSliderPresenter implements SliderPresenterInterface
 {
-
     /**
      * renders slider.
      * @param string|Slider $slider
@@ -29,12 +29,11 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
 
         $view = View::make($template)
             ->with([
-                'slider' => $slider
+                'slider' => $slider,
             ]);
 
         return $view->render();
     }
-
 
     /**
      * @param $systemName

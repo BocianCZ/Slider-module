@@ -1,10 +1,12 @@
-<?php namespace Modules\Slider\Entities;
+<?php
+
+namespace Modules\Slider\Entities;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Media\Support\Traits\MediaRelation;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Page\Entities\Page;
 
 class Slide extends Model
@@ -16,7 +18,8 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
-        'active'
+        'active',
+        'custom_html',
     ];
 
     protected $fillable = [
@@ -29,7 +32,8 @@ class Slide extends Model
         'uri',
         'url',
         'active',
-        'external_image_url'
+        'external_image_url',
+        'custom_html',
     ];
     protected $table = 'slider__slides';
 
@@ -45,7 +49,7 @@ class Slide extends Model
 
     public function slider()
     {
-        return $this->belongsTo('Modules\Slider\Entities\Slider');
+        return $this->belongsTo(Slider::class);
     }
 
     /**
@@ -71,7 +75,7 @@ class Slide extends Model
      */
     public function getImageUrl()
     {
-        if($this->imageUrl === null) {
+        if ($this->imageUrl === null) {
             if (!empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
             } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
@@ -81,7 +85,6 @@ class Slide extends Model
 
         return $this->imageUrl;
     }
-
 
     /**
      * returns slider link URL
@@ -93,9 +96,9 @@ class Slide extends Model
             if (!empty($this->url)) {
                 $this->linkUrl = $this->url;
             } elseif (!empty($this->uri)) {
-                $this->linkUrl = '/' . App::getLocale() . '/' . $this->uri;
+                $this->linkUrl = '/' . app()->getLocale() . '/' . $this->uri;
             } elseif (!empty($this->page)) {
-                $this->linkUrl = URL::route('page', ['uri' => $this->page->slug]);
+                $this->linkUrl = route('page', ['uri' => $this->page->slug]);
             }
         }
 

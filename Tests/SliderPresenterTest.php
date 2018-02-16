@@ -6,7 +6,6 @@ use Modules\Slider\Presenters\SliderPresenter;
 
 class SliderPresenterTest extends BaseSliderTest
 {
-
     /**
      * @var SliderPresenter
      */

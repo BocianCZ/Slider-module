@@ -1,4 +1,6 @@
-<?php namespace Modules\Slider\Services;
+<?php
+
+namespace Modules\Slider\Services;
 
 use Illuminate\Support\Facades\URL;
 
@@ -58,10 +60,9 @@ class SliderRenderer
 </div>
 HTML;
             $this->slides .= "<div class='dd-handle'>{$slide->title}</div>";
-            $this->slides .= "<div><img class='img-responsive' src='".$slide->getImageUrl()."' /></div>";
+            $this->slides .= "<div><img class='img-responsive' src='" . $slide->getImageUrl() . "' /></div>";
             $this->slides .= '</li>';
         }
         $this->slides .= '</ol>';
     }
-
 }

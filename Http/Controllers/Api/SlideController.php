@@ -1,11 +1,13 @@
-<?php namespace Modules\Slider\Http\Controllers\Api;
+<?php
+
+namespace Modules\Slider\Http\Controllers\Api;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
-use Modules\Slider\Services\SlideOrderer;
 use Modules\Slider\Repositories\SlideRepository;
+use Modules\Slider\Services\SlideOrderer;
 
 class SlideController extends Controller
 {

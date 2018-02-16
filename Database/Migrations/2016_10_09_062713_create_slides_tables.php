@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateSlidesTables extends Migration {
-
+class CreateSlidesTables extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,8 +12,7 @@ class CreateSlidesTables extends Migration {
      */
     public function up()
     {
-        Schema::create('slider__slides', function(Blueprint $table)
-        {
+        Schema::create('slider__slides', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
@@ -35,5 +34,4 @@ class CreateSlidesTables extends Migration {
     {
         Schema::drop('slider__slides');
     }
-
 }
