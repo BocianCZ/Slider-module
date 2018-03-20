@@ -22,7 +22,6 @@ return [
     ],
     'table' => [
         'name' => 'Name',
-        'title' => 'Title',
         'system name' => 'System name',
     ],
     'form' => [
@@ -42,4 +41,8 @@ return [
     'navigation' => [
         'back to index' => 'Go back to the slider index',
     ],
+    'list resource' => 'List',
+    'create resource' => 'Create',
+    'edit resource' => 'Edit',
+    'destroy resource' => 'Delete',
 ];

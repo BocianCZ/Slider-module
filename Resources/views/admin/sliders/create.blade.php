@@ -2,12 +2,12 @@
 
 @section('content-header')
 <h1>
-    {{ trans('slider::slider.titles.create slider') }}
+    {{ trans('slider::sliders.titles.create slider') }}
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><a href="{{ URL::route('admin.slider.slider.index') }}">{{ trans('slider::slider.breadcrumb.slider') }}</a></li>
-    <li>{{ trans('slider::slider.breadcrumb.create slider') }}</li>
+    <li><a href="{{ URL::route('admin.slider.slider.index') }}">{{ trans('slider::sliders.breadcrumb.slider') }}</a></li>
+    <li>{{ trans('slider::sliders.breadcrumb.create slider') }}</li>
 </ol>
 @stop
 

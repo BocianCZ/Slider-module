@@ -22,7 +22,6 @@ return [
     ],
     'table' => [
         'name' => 'Název',
-        'title' => 'Titulek',
         'system name' => 'Systémové jméno',
     ],
     'form' => [

@@ -22,7 +22,6 @@ return [
     ],
     'table' => [
         'name' => 'Nombre',
-        'title' => 'Título',
         'system name' => 'Nombre de sistema',
     ],
     'form' => [
