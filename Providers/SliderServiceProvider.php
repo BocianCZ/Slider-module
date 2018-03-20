@@ -2,9 +2,9 @@
 
 namespace Modules\Slider\Providers;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Slider\Entities\Slide;
@@ -39,6 +39,45 @@ class SliderServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('slider', RegisterSliderSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('sliders', array_dot(trans('slider::sliders')));
+            $event->load('slides', array_dot(trans('slider::slides')));
+        });
+    }
+
+    /**
+     * Register class binding
+     */
+    private function registerBindings()
+    {
+        $this->app->bind(
+            'Modules\Slider\Repositories\SliderRepository',
+            function () {
+                $repository = new EloquentSliderRepository(new Slider());
+
+                if (!config('app.cache')) {
+                    return $repository;
+                }
+
+                return new CacheSliderDecorator($repository);
+            }
+        );
+
+        $this->app->bind(
+            'Modules\Slider\Repositories\SlideRepository',
+            function () {
+                $repository = new EloquentSlideRepository(new Slide());
+
+                if (!config('app.cache')) {
+                    return $repository;
+                }
+
+                return new CacheSlideDecorator($repository);
+            }
+        );
+
+        $this->app->bind('Modules\Slider\Presenters\SliderPresenter');
     }
 
     /**
@@ -55,6 +94,16 @@ class SliderServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the active sliders
+     */
+    private function registerSliders()
+    {
+        if (!$this->app['asgard.isInstalled']) {
+            return;
+        }
+    }
+
+    /**
      * Get the services provided by the provider.
      *
      * @return array
@@ -62,49 +111,5 @@ class SliderServiceProvider extends ServiceProvider
     public function provides()
     {
         return array('sliders');
-    }
-
-    /**
-     * Register class binding
-     */
-    private function registerBindings()
-    {
-        $this->app->bind(
-            'Modules\Slider\Repositories\SliderRepository',
-            function () {
-                $repository = new EloquentSliderRepository(new Slider());
-
-                if (! config('app.cache')) {
-                    return $repository;
-                }
-
-                return new CacheSliderDecorator($repository);
-            }
-        );
-
-        $this->app->bind(
-            'Modules\Slider\Repositories\SlideRepository',
-            function () {
-                $repository = new EloquentSlideRepository(new Slide());
-
-                if (! config('app.cache')) {
-                    return $repository;
-                }
-
-                return new CacheSlideDecorator($repository);
-            }
-        );
-
-        $this->app->bind('Modules\Slider\Presenters\SliderPresenter');
-    }
-
-    /**
-     * Register the active sliders
-     */
-    private function registerSliders()
-    {
-        if (! $this->app['asgard.isInstalled']) {
-            return;
-        }
     }
 }

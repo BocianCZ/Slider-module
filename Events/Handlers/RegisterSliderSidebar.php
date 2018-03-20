@@ -19,7 +19,7 @@ class RegisterSliderSidebar extends AbstractAdminSidebar
     public function extendWith(Menu $menu)
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
-            $group->item(trans('slider::slider.title'), function (Item $item) {
+            $group->item(trans('slider::sliders.title'), function (Item $item) {
                 $item->weight(3);
                 $item->icon('fa fa-bars');
                 $item->route('admin.slider.slider.index');

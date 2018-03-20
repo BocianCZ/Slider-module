@@ -15,7 +15,7 @@ class CacheSliderDecorator extends BaseCacheDecorator implements SliderRepositor
     public function __construct(SliderRepository $slider)
     {
         parent::__construct();
-        $this->entityName = 'sliders';
+        $this->entityName = 'slider.sliders';
         $this->repository = $slider;
     }
 
