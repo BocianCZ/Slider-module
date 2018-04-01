@@ -2,13 +2,14 @@
 
 @section('content-header')
 <h1>
-    {{ trans('slider::slider.titles.edit slider') }}
+    {{ trans('slider::sliders.titles.edit slider') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><a href="{{ URL::route('admin.slider.slider.index') }}">{{ trans('slider::slider.breadcrumb.slider') }}</a></li>
-    <li>{{ trans('slider::slider.breadcrumb.edit slider') }}</li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('admin.slider.slider.index') }}">{{ trans('slider::sliders.title') }}</a></li>
+    <li>{{ trans('slider::sliders.breadcrumb.edit slider') }}</li>
 </ol>
+
 @stop
 
 @section('styles')
@@ -21,8 +22,8 @@
     <div class="col-md-6">
         <div class="row">
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
-                <a href="{{ URL::route('dashboard.slide.create', [$slider->id]) }}" class="btn btn-primary btn-flat">
-                    <i class="fa fa-pencil"></i> {{ trans('slider::slider.button.create slide') }}
+                <a href="{{ route('admin.slider.slide.create', [$slider->id]) }}" class="btn btn-primary btn-flat">
+                    <i class="fa fa-pencil"></i> {{ trans('slider::sliders.button.create slide') }}
                 </a>
             </div>
         </div>
@@ -44,7 +45,7 @@
         <div class="box-footer">
             <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.update') }}</button>
             <button class="btn btn-default btn-flat" name="button" type="reset">{{ trans('core::core.button.reset') }}</button>
-            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.slider.slider.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+            <a class="btn btn-danger pull-right btn-flat" href="{{ route('admin.slider.slider.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
         </div>
     </div>
 </div>
@@ -57,9 +58,9 @@
 @section('shortcuts')
     <dl class="dl-horizontal">
         <dt><code>c</code></dt>
-        <dd>{{ trans('slider::slider.titles.create slide') }}</dd>
+        <dd>{{ trans('slider::sliders.titles.create slide') }}</dd>
         <dt><code>b</code></dt>
-        <dd>{{ trans('slider::slider.navigation.back to index') }}</dd>
+        <dd>{{ trans('slider::sliders.navigation.back to index') }}</dd>
     </dl>
 @stop
 

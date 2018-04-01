@@ -2,11 +2,11 @@
 
 @section('content-header')
 <h1>
-    {{ trans('slider::slider.titles.slider') }}
+    {{ trans('slider::sliders.titles.slider') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li class="active">{{ trans('slider::slider.breadcrumb.slider') }}</li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li class="active">{{ trans('slider::sliders.breadcrumb.slider') }}</li>
 </ol>
 @stop
 
@@ -15,8 +15,8 @@
     <div class="col-md-12">
         <div class="row">
             <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
-                <a href="{{ URL::route('admin.slider.slider.create') }}" class="btn btn-primary btn-flat">
-                    <i class="fa fa-pencil"></i> {{ trans('slider::slider.button.create slider') }}
+                <a href="{{ route('admin.slider.slider.create') }}" class="btn btn-primary btn-flat">
+                    <i class="fa fa-pencil"></i> {{ trans('slider::sliders.button.create slider') }}
                 </a>
             </div>
         </div>
@@ -28,8 +28,8 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('slider::slider.table.name') }}</th>
-                            <th>{{ trans('slider::slider.table.system name') }}</th>
+                            <th>{{ trans('slider::sliders.table.name') }}</th>
+                            <th>{{ trans('slider::sliders.table.system name') }}</th>
                             <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                         </tr>
                     </thead>
@@ -38,18 +38,18 @@
                         <?php foreach ($sliders as $slider): ?>
                             <tr>
                                 <td>
-                                    <a href="{{ URL::route('admin.slider.slider.edit', [$slider->id]) }}">
+                                    <a href="{{ route('admin.slider.slider.edit', [$slider->id]) }}">
                                         {{ $slider->name }}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ URL::route('admin.slider.slider.edit', [$slider->id]) }}">
+                                    <a href="{{ route('admin.slider.slider.edit', [$slider->id]) }}">
                                         {{ $slider->system_name }}
                                     </a>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ URL::route('admin.slider.slider.edit', [$slider->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="{{ route('admin.slider.slider.edit', [$slider->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
                                         <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $slider->id }}"><i class="glyphicon glyphicon-trash"></i></button>
                                     </div>
                                 </td>
@@ -59,8 +59,8 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>{{ trans('slider::slider.table.name') }}</th>
-                            <th>{{ trans('slider::slider.table.title') }}</th>
+                            <th>{{ trans('slider::sliders.table.name') }}</th>
+                            <th>{{ trans('slider::sliders.table.system name') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
                     </tfoot>

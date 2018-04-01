@@ -8,7 +8,7 @@ class UpdateSliderRequest extends FormRequest
 {
     public function rules()
     {
-        $slider = $this->route()->getParameter('slider');
+        $slider = $this->route()->parameter('slider__slider');
 
         return [
             'name' => 'required',

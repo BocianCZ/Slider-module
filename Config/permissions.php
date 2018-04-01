@@ -2,19 +2,14 @@
 
 return [
     'slider.sliders' => [
-        'index' => 'index',
-        'create' => 'create',
-        'store' => 'store',
-        'edit' => 'edit',
-        'update' => 'update',
-        'destroy' => 'destroy',
+        'index' => 'slider::sliders.titles.slider',
+        'create' => 'slider::sliders.titles.create slider',
+        'edit' => 'slider::sliders.titles.edit slider',
+        'destroy' => 'slider::sliders.titles.delete slider',
     ],
     'slider.slides' => [
-        'index' => 'index',
-        'create' => 'create',
-        'store' => 'store',
-        'edit' => 'edit',
-        'update' => 'update',
-        'destroy' => 'destroy',
+        'create' => 'slider::sliders.titles.create slide',
+        'edit' => 'slider::sliders.titles.edit slide',
+        'destroy' => 'slider::sliders.titles.delete slide',
     ],
 ];

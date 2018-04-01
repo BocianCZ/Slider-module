@@ -6,8 +6,10 @@ return [
         'slider' => 'Slider management',
         'create slider' => 'Create slider',
         'edit slider' => 'Edit slider',
+        'delete slider' => 'Delete slider',
         'create slide' => 'Create slide',
         'edit slide' => 'Edit slide',
+        'delete slide' => 'Delete slide',
     ],
     'breadcrumb' => [
         'slider' => 'Slider management',
@@ -22,7 +24,6 @@ return [
     ],
     'table' => [
         'name' => 'Name',
-        'title' => 'Title',
         'system name' => 'System name',
     ],
     'form' => [
@@ -42,4 +43,8 @@ return [
     'navigation' => [
         'back to index' => 'Go back to the slider index',
     ],
+    'list resource' => 'List',
+    'create resource' => 'Create',
+    'edit resource' => 'Edit',
+    'destroy resource' => 'Delete',
 ];

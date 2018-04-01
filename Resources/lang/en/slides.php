@@ -9,10 +9,8 @@ return [
         'new tab' => 'New tab',
         'custom html' => 'Custom HTML',
     ],
-    'link-type' => [
-        'link type' => 'Linktype',
-        'page' => 'Page',
-        'internal' => 'Internal',
-        'external' => 'External',
-    ],
+    'list resource' => 'List',
+    'create resource' => 'Create',
+    'edit resource' => 'Edit',
+    'destroy resource' => 'Delete',
 ];

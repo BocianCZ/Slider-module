@@ -2,12 +2,12 @@
 
 @section('content-header')
 <h1>
-    {{ trans('slider::slider.titles.create slider') }}
+    {{ trans('slider::sliders.titles.create slider') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-    <li><a href="{{ URL::route('admin.slider.slider.index') }}">{{ trans('slider::slider.breadcrumb.slider') }}</a></li>
-    <li>{{ trans('slider::slider.breadcrumb.create slider') }}</li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('admin.slider.slider.index') }}">{{ trans('slider::sliders.title') }}</a></li>
+    <li>{{ trans('slider::sliders.breadcrumb.create slider') }}</li>
 </ol>
 @stop
 
@@ -29,7 +29,7 @@
         <div class="box-footer">
             <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
             <button class="btn btn-default btn-flat" name="button" type="reset">{{ trans('core::core.button.reset') }}</button>
-            <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.slider.slider.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+            <a class="btn btn-danger pull-right btn-flat" href="{{ route('admin.slider.slider.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
         </div>
     </div>
 </div>
