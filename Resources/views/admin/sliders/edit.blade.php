@@ -92,7 +92,7 @@ $( document ).ready(function() {
         var data = $('.dd').nestable('serialize');
         $.ajax({
             type: 'POST',
-            url: '{{ route('api.slide.update') }}',
+            url: '{{ route('api.slider.slide.update') }}',
             data: {'slider': JSON.stringify(data), '_token': '<?php echo csrf_token(); ?>'},
             dataType: 'json',
             success: function(data) {
@@ -111,7 +111,7 @@ $( document ).ready(function() {
                 slideId = self.data('item-id');
             $.ajax({
                 type: 'POST',
-                url: '{{ route('api.slide.delete') }}',
+                url: '{{ route('api.slider.slide.delete') }}',
                 data: {
                     _token: '{{ csrf_token() }}',
                     slide: slideId
