@@ -6,8 +6,10 @@ return [
         'slider' => 'Správa slideru',
         'create slider' => 'Vytvořit slider',
         'edit slider' => 'Upravit slider',
+        'delete slider' => 'Smazat slider',
         'create slide' => 'Vytvořit slide',
         'edit slide' => 'Upravit slide',
+        'delete slide' => 'Smazat slide',
     ],
     'breadcrumb' => [
         'slider' => 'Správa slideru',

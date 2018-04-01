@@ -6,8 +6,10 @@ return [
         'slider' => 'Zarządzanie slajderem',
         'create slider' => 'Tworzenie slajdera',
         'edit slider' => 'Edycja slajdera',
+        'delete slider' => 'Usuwanie slajdera',
         'create slide' => 'Tworzenie slajdu',
         'edit slide' => 'Edycja slajdu',
+        'delete slide' => 'Usuwanie slajdu',
     ],
     'breadcrumb' => [
         'slider' => 'Zarządzanie slajderem',

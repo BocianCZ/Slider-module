@@ -2,15 +2,14 @@
 
 return [
     'slider.sliders' => [
-        'index' => 'slider::sliders.list resource',
-        'create' => 'slider::sliders.create resource',
-        'edit' => 'slider::sliders.edit resource',
-        'destroy' => 'slider::sliders.destroy resource',
+        'index' => 'slider::sliders.titles.slider',
+        'create' => 'slider::sliders.titles.create slider',
+        'edit' => 'slider::sliders.titles.edit slider',
+        'destroy' => 'slider::sliders.titles.delete slider',
     ],
     'slider.slides' => [
-        'index' => 'slider::slides.list resource',
-        'create' => 'slider::slides.create resource',
-        'edit' => 'slider::slides.edit resource',
-        'destroy' => 'slider::slides.destroy resource',
+        'create' => 'slider::sliders.titles.create slide',
+        'edit' => 'slider::sliders.titles.edit slide',
+        'destroy' => 'slider::sliders.titles.delete slide',
     ],
 ];
