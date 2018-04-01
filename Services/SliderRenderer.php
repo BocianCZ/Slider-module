@@ -48,7 +48,7 @@ class SliderRenderer
         $this->slides .= '<ol class="dd-list">';
         foreach ($slides as $slide) {
             $this->slides .= "<li class='dd-item' data-id='{$slide->id}'>";
-            $editLink = URL::route('dashboard.slide.edit', [$this->sliderId, $slide->id]);
+            $editLink = route('admin.slider.slide.edit', [$this->sliderId, $slide->id]);
             $this->slides .= <<<HTML
 <div class="btn-group" role="group" aria-label="Action buttons" style="display: inline">
     <a class="btn btn-sm btn-info" style="float:left;" href="{$editLink}">
