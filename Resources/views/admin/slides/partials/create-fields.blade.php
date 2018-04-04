@@ -1,3 +1,9 @@
+<div class="form-group {{ $errors->has("name") ? ' has-error' : '' }}">
+    {!! Form::label("name", trans('slider::slides.form.name')) !!}
+    {!! Form::text("name", old("name"), ["class" => "form-control", "placeholder" => trans('slider::slides.form.name')]) !!}
+    {!! $errors->first("name", '<span class="help-block">:message</span>') !!}
+</div>
+
 <div class="form-group">
     <label for="page">{{ trans('slider::slides.form.page') }}</label>
     <select class="form-control" name="page_id" id="page">

@@ -59,7 +59,7 @@ class SliderRenderer
     </a>
 </div>
 HTML;
-            $this->slides .= "<div class='dd-handle'>{$slide->title}</div>";
+            $this->slides .= "<div class='dd-handle'>{$slide->name}</div>";
             $this->slides .= "<div><img class='img-responsive' src='" . $slide->getImageUrl() . "' /></div>";
             $this->slides .= '</li>';
         }
