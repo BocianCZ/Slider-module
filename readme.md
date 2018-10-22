@@ -2,10 +2,10 @@
 
 ## IMPORTANT: Slider Module for AsgardCMS v1 and v2 is no longer maintained
 For Asgard v1, use `0.x` tagged releases, for Asgard v2 use `2.x` tagged releases.
-Please upgrade Asgard to v3 if you wish to use the latest features (see changelog in releases for details)
+Please upgrade Asgard to v3 if you wish to use the latest features (see [changelog in releases](https://github.com/BocianCZ/slider-module/releases) for details)
 
 ## Special Thanks
-to Nicolas Widart for AsgardCMS and his Menu Module, that was used as a foundation for the Slider Module.
+to Nicolas Widart for [AsgardCMS](https://github.com/AsgardCms) and his [Menu Module](https://github.com/AsgardCms/Menu), that was used as a foundation for the Slider Module.
 All other contributors to this module
 
 ## Installation
@@ -19,7 +19,7 @@ New Slider item will appear in the Sidebar
 ## Usage
 
 ### Prerequisites
-By default, Slider module is created using Bootstrap Carousel http://getbootstrap.com/javascript/#carousel
+By default, Slider module is created using [Bootstrap Carousel](https://getbootstrap.com/docs/4.0/components/carousel/)
 so make sure you have all prerequisites loaded for standard Bootstrap carousel (Bootstrap Carousel CSS and JS)
 
 ### Basic Usage
