@@ -23,6 +23,7 @@ return [
         'create slider' => 'Create slider',
     ],
     'table' => [
+        'status' => 'Status',
         'name' => 'Name',
         'system name' => 'System name',
     ],

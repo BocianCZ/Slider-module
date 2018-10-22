@@ -28,6 +28,7 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>{{ trans('slider::sliders.table.status') }}</th>
                             <th>{{ trans('slider::sliders.table.name') }}</th>
                             <th>{{ trans('slider::sliders.table.system name') }}</th>
                             <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
@@ -37,6 +38,11 @@
                     <?php if (isset($sliders)): ?>
                         <?php foreach ($sliders as $slider): ?>
                             <tr>
+                                <td>
+                                    <span class="label bg-{{ $slider->active == '0' ? 'red':'green'}}">
+                                        {{ $slider->active == '1' ? 'Online':'Offline'}}
+                                    </span>
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.slider.slider.edit', [$slider->id]) }}">
                                         {{ $slider->name }}
@@ -59,6 +65,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th>{{ trans('slider::sliders.table.status') }}</th>
                             <th>{{ trans('slider::sliders.table.name') }}</th>
                             <th>{{ trans('slider::sliders.table.system name') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
