@@ -15,8 +15,12 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
      * @param string $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render($slider, $template = 'slider::frontend.bootstrap.slider')
+    public function render($slider, $template = null)
     {
+        if ($template === null) {
+            $template = config('asgard.slider.config.template');
+        }
+
         if (!$slider instanceof Slider) {
             $slider = $this->getSliderFromRepository($slider);
             if ($slider && $slider->active == false) {    // inactive slider must not render
