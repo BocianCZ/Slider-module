@@ -18,5 +18,5 @@ return [
     | Set this to valid blade view. Default is bootstrap 3:
     | 'template' => 'slider::frontend.bootstrap.slider'
     */
-    'template' => 'slider::frontend.bootstrap.slider',
+    'template' => 'slider::frontend.bootstrap4.slider',
 ];
