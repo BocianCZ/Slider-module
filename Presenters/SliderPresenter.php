@@ -12,11 +12,14 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
      * @param string|Slider $slider
      * pass Slider instance to render specific slider
      * pass string to automatically retrieve slider from repository
+     * @param string $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render($slider)
+    public function render($slider, $template = null)
     {
-        $template = config('asgard.slider.config.template');
+        if ($template === null) {
+            $template = config('asgard.slider.config.template');
+        }
 
         if (!$slider instanceof Slider) {
             $slider = $this->getSliderFromRepository($slider);
