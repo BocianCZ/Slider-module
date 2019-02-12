@@ -78,7 +78,12 @@
         class="slider__yt-slide slider__slide-yt-bg-image"
         style="background-image: url('{{ $slide->getImageUrl() ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_HIGH) }}');"
 >
-    <div class="slide-yt-overlay"></div>
+    <div class="slide-yt-overlay">
+        <div class="carousel-caption d-none d-md-block">
+            <h1>{{ $slide->title }}</h1>
+            <span>{{ $slide->caption }}</span>
+        </div>
+    </div>
     <div class="video_wrap" style="display:none">
         <div id="slider__player-{{ $slide->id }}"></div>
     </div>
