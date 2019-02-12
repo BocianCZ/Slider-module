@@ -3,8 +3,9 @@
 namespace Modules\Slider\Events;
 
 use Modules\Media\Contracts\StoringMedia;
+use Modules\Slider\Entities\Slide;
 
-class SlideWasCreated implements StoringMedia
+class SlideWasCreatedOrUpdated implements StoringMedia
 {
     /**
      * @var array
@@ -12,14 +13,14 @@ class SlideWasCreated implements StoringMedia
     public $data;
 
     /**
-     * @var Post
+     * @var Slide
      */
-    public $post;
+    public $slide;
 
-    public function __construct($post, array $data)
+    public function __construct($slide, array $data)
     {
         $this->data = $data;
-        $this->post = $post;
+        $this->slide = $slide;
     }
 
     /**
@@ -28,7 +29,7 @@ class SlideWasCreated implements StoringMedia
      */
     public function getEntity()
     {
-        return $this->post;
+        return $this->slide;
     }
 
     /**

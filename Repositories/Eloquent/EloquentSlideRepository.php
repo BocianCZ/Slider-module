@@ -3,7 +3,7 @@
 namespace Modules\Slider\Repositories\Eloquent;
 
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
-use Modules\Slider\Events\SlideWasCreated;
+use Modules\Slider\Events\SlideWasCreatedOrUpdated;
 use Modules\Slider\Repositories\SlideRepository;
 
 class EloquentSlideRepository extends EloquentBaseRepository implements SlideRepository
@@ -19,15 +19,17 @@ class EloquentSlideRepository extends EloquentBaseRepository implements SlideRep
     {
         $slide = parent::create($data);
 
-        event(new SlideWasCreated($slide, $data));
+        event(new SlideWasCreatedOrUpdated($slide, $data));
 
         return $slide;
     }
 
-    public function update($sliderItem, $data)
+    public function update($slide, $data)
     {
-        $sliderItem->update($data);
+        parent::update($slide, $data);
 
-        return $sliderItem;
+        event(new SlideWasCreatedOrUpdated($slide, $data));
+
+        return $slide;
     }
 }
