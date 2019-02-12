@@ -102,6 +102,18 @@ class HomepageController {
 
 then, inside of the `homepage.blade.php` template, you can render slider using `{!! Slider::render($mySlider) !!}`
 
+#### Using Youtube video on a slide background (Bootstrap4 only supported)
+You have the option to provide a Youtube video link for each slide. When using a default Bootstrap 4 template, this
+video will play on a background.
+
+If image is provided at the same time, it will be displayed as a slide background before the video player loads (delay
+is set to 2 seconds by default)
+
+All styles and javascripts are contained in the blade template (youtube-video-slide.blade.php)
+see https://www.powderkegwebdesign.com/implementing-youtube-background-videos/ for the original solution
+
+**!!! When using a video on the background, you can currently only use it on a single slide. Videos on more than one
+slide will not play !!!**
 
 ## Resources
 
