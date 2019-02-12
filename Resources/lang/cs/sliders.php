@@ -35,8 +35,10 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'external image url' => 'URL externího obrázku',
+        'youtube video url' => 'URL Youtube videa',
         'placeholder' => [
             'external image url' => 'http://www.example.com/link/to/image.jpg',
+            'youtube video url' => 'https://www.youtube.com/watch?v=Ib4HUTxBfbA',
         ],
 
     ],

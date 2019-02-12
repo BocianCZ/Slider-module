@@ -4,14 +4,38 @@ namespace Modules\Slider\Entities;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Collection;
+use Modules\Media\Entities\File;
 use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Page\Entities\Page;
 
+/**
+ * Class Slide
+ * @package Modules\Slider\Entities
+ * @property int $id
+ * @property int $slider_id
+ * @property int $page_id
+ * @property int $position
+ * @property string $target
+ * @property string $title
+ * @property string $caption
+ * @property string $uri
+ * @property string $url
+ * @property bool $active
+ * @property string $external_image_url
+ * @property string $youtube_video_url
+ * @property string $custom_html
+ * @property File[]|Collection $files
+ */
 class Slide extends Model
 {
     use Translatable, MediaRelation;
+
+    const YOUTUBE_THUMBNAIL_QUALITY_DEFAULT = 'default';
+    const YOUTUBE_THUMBNAIL_QUALITY_STANDARD = 'sddefault';
+    const YOUTUBE_THUMBNAIL_QUALITY_MEDIUM = 'mqdefault';
+    const YOUTUBE_THUMBNAIL_QUALITY_HIGH = 'hqdefault';
+    const YOUTUBE_THUMBNAIL_QUALITY_MAX = 'maxresdefault';
 
     public $translatedAttributes = [
         'title',
@@ -33,8 +57,10 @@ class Slide extends Model
         'url',
         'active',
         'external_image_url',
+        'youtube_video_url',
         'custom_html',
     ];
+
     protected $table = 'slider__slides';
 
     /**
@@ -54,7 +80,6 @@ class Slide extends Model
 
     /**
      * Check if page_id is empty and returning null instead empty string
-     * @return number
      */
     public function setPageIdAttribute($value)
     {
@@ -104,4 +129,29 @@ class Slide extends Model
 
         return $this->linkUrl;
     }
+
+    /**
+     * @return bool
+     */
+    public function isYoutubeVideo()
+    {
+        return !empty($this->youtube_video_url);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getYoutubeVideoId()
+    {
+        preg_match("/https:\/\/www\.youtube\.com\/watch\?v=([a-z0-9].*)/i", $this->youtube_video_url, $matches);
+
+        return isset($matches[1]) ? $matches[1] : null;
+    }
+
+    public function getYoutubeVideoThumbnail($quality = self::YOUTUBE_THUMBNAIL_QUALITY_DEFAULT)
+    {
+        return 'https://img.youtube.com/vi/' . $this->getYoutubeVideoId() . '/' . $quality . '.jpg';
+    }
+
+
 }

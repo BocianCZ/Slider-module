@@ -3,6 +3,7 @@
 namespace Modules\Slider\Services;
 
 use Illuminate\Support\Facades\URL;
+use Modules\Slider\Entities\Slide;
 
 class SliderRenderer
 {
@@ -46,6 +47,7 @@ class SliderRenderer
     private function generateHtmlFor($slides)
     {
         $this->slides .= '<ol class="dd-list">';
+        /** @var Slide $slide */
         foreach ($slides as $slide) {
             $this->slides .= "<li class='dd-item' data-id='{$slide->id}'>";
             $editLink = route('admin.slider.slide.edit', [$this->sliderId, $slide->id]);
@@ -59,8 +61,8 @@ class SliderRenderer
     </a>
 </div>
 HTML;
-            $this->slides .= "<div class='dd-handle'>{$slide->title}</div>";
-            $this->slides .= "<div><img class='img-responsive' src='" . $slide->getImageUrl() . "' /></div>";
+            $this->slides .= "<div class='dd-handle'>{$slide->title}" . ($slide->isYoutubeVideo() ? "<i class='pull-right fa fa-youtube'></i>" : ""). "</div>";
+            $this->slides .= "<div><img class='img-responsive' src='" . ($slide->getImageUrl() ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_MEDIUM)) . "' /></div>";
             $this->slides .= '</li>';
         }
         $this->slides .= '</ol>';
