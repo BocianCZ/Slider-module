@@ -23,7 +23,7 @@
 
     // onYouTubeIframeAPIReady() is called when the IFrame API is ready to go.
     function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
+        player = new YT.Player('slider__player-{{ $slide->id }}', {
             height: '720',
             width: '1280',
             videoId: '{{ $slide->getYoutubeVideoId() }}',
@@ -38,12 +38,12 @@
     function pkOnPlayerStateChange(e) {
         var frm = $(e.target.getIframe());
         if (e.data === YT.PlayerState.ENDED) {
-            if ('player' === frm.attr('id')) {
+            if ('slider__player-{{ $slide->id }}' === frm.attr('id')) {
                 player.playVideo();
             }
         }
         if (e.data === YT.PlayerState.BUFFERING) {
-            if ('player' === frm.attr('id')) {
+            if ('slider__player-{{ $slide->id }}' === frm.attr('id')) {
                 e.target.setPlaybackQuality('hd720');
             }
         }
@@ -80,6 +80,6 @@
 >
     <div class="slide-yt-overlay"></div>
     <div class="video_wrap" style="display:none">
-        <div id="player"></div>
+        <div id="slider__player-{{ $slide->id }}"></div>
     </div>
 </section>
