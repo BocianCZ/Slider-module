@@ -30,6 +30,12 @@ class Slide extends Model
 {
     use Translatable, MediaRelation;
 
+    const YOUTUBE_THUMBNAIL_QUALITY_DEFAULT = 'default';
+    const YOUTUBE_THUMBNAIL_QUALITY_STANDARD = 'sddefault';
+    const YOUTUBE_THUMBNAIL_QUALITY_MEDIUM = 'mqdefault';
+    const YOUTUBE_THUMBNAIL_QUALITY_HIGH = 'hqdefault';
+    const YOUTUBE_THUMBNAIL_QUALITY_MAX = 'maxresdefault';
+
     public $translatedAttributes = [
         'title',
         'caption',
@@ -136,9 +142,14 @@ class Slide extends Model
      */
     public function getYoutubeVideoId()
     {
-        preg_match("/https:\/\/www\.youtube\.com\/watch\?v=([a-z0-9].*)/i", $this->external_image_url, $matches);
+        preg_match("/https:\/\/www\.youtube\.com\/watch\?v=([a-z0-9].*)/i", $this->youtube_video_url, $matches);
 
         return isset($matches[1]) ? $matches[1] : null;
+    }
+
+    public function getYoutubeVideoThumbnail($quality = self::YOUTUBE_THUMBNAIL_QUALITY_DEFAULT)
+    {
+        return 'https://img.youtube.com/vi/' . $this->getYoutubeVideoId() . '/' . $quality . '.jpg';
     }
 
 
