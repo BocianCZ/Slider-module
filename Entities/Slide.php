@@ -12,6 +12,7 @@ use Modules\Page\Entities\Page;
 /**
  * Class Slide
  * @package Modules\Slider\Entities
+ * @property int $id
  * @property int $slider_id
  * @property int $page_id
  * @property int $position

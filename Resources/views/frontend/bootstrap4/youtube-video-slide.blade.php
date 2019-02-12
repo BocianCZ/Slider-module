@@ -1,15 +1,17 @@
 <?php /** @var \Modules\Slider\Entities\Slide $slide */?>
+<?php /** @see https://www.powderkegwebdesign.com/implementing-youtube-background-videos/ */ ?>
 <style>
     * { box-sizing:border-box;  }
-    #page-banner  { text-align:center; position:relative; color:#ffffff; height:679px; overflow:hidden; }
-    .bg-image     { background-size:cover; background-position:center center; }
-    .overlay    { position:relative;height:100%; width:100%; z-index:2; }
-    .inner      { padding-top:50px; }
-    h1      { color:#ffffff; margin:0 auto; }
-    .video_wrap   { height:100%; width:100%; position:absolute; left:0; overflow:hidden; top:0; padding-bottom:56.5%; }
-    iframe      { height:100%; position:absolute; width:100%; top:0; left:0; }
+    #slider__slide-wrapper-{{ $slide->id }}  { text-align:center; position:relative; color:#ffffff; height:679px; overflow:hidden; }
+    .slider__slide-yt-bg-image     { background-size:cover; background-position:center center; }
+    .slider__yt-slide .slide-yt-overlay    { position:relative;height:100%; width:100%; z-index:2; }
+    .slider__yt-slide .inner      { padding-top:50px; }
+    /*h1      { color:#ffffff; margin:0 auto; }*/
+    .slider__yt-slide .video_wrap   { height:100%; width:100%; position:absolute; left:0; overflow:hidden; top:0; padding-bottom:56.5%; }
+    .slider__yt-slide iframe      { height:100%; position:absolute; width:100%; top:0; left:0; }
 </style>
-<script>
+
+<script type="text/javascript">
     // Loads the YouTube IFrame API JavaScript code.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -25,7 +27,7 @@
             height: '720',
             width: '1280',
             videoId: '{{ $slide->getYoutubeVideoId() }}',
-            playerVars: { 'autoplay': 1, 'controls': 0, 'showinfo': 0, 'rel': 0, 'enablejsapi':1, 'wmode' : 'transparent'},
+            playerVars: { 'autoplay': 1, 'controls': 0, 'showinfo': 0, 'rel': 0, 'enablejsapi':1, 'wmode': 'transparent'},
             events : {
                 'onReady' : pkOnPlayerReady,
                 'onStateChange' : pkOnPlayerStateChange
@@ -57,7 +59,7 @@
         var img = new Image();
         img.onload = function() { return deferred.resolve(); };
         img.onerror = function() { return deferred.reject(); };
-        img.src = "https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif?"+ new Date().getTime();
+        img.src = "https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif?" + new Date().getTime();
         return deferred.promise();
     };
 
@@ -71,9 +73,13 @@
     });
 </script>
 
-<section id="page-banner" class="bg-image" style="background-image: url('{{ $slide->getImageUrl() ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_HIGH) }}');">
-    <div class="overlay">
-
+<section
+        id="slider__slide-wrapper-{{ $slide->id }}"
+        class="slider__yt-slide slider__slide-yt-bg-image"
+        style="background-image: url('{{ $slide->getImageUrl() ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_HIGH) }}');"
+>
+    <div class="slide-yt-overlay"></div>
+    <div class="video_wrap" style="display:none">
+        <div id="player"></div>
     </div>
-    <div class="video_wrap" style="display:none"><div id="player"></div></div>
 </section>
