@@ -8,7 +8,9 @@ class UpdateSlideRequest extends FormRequest
 {
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'required',
+        ];
     }
 
     public function authorize()
@@ -18,6 +20,8 @@ class UpdateSlideRequest extends FormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'name.required' => trans('slider::validation.name is required'),
+        ];
     }
 }

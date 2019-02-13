@@ -2,6 +2,7 @@
 
 return [
     'form' => [
+        'name' => 'Nazwa',
         'page' => 'Strona',
         'module' => 'Moduł',
         'target' => 'Cel',

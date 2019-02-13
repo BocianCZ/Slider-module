@@ -61,7 +61,7 @@ class SliderRenderer
     </a>
 </div>
 HTML;
-            $this->slides .= "<div class='dd-handle'>{$slide->title}" . ($slide->isYoutubeVideo() ? "<i class='pull-right fa fa-youtube'></i>" : ""). "</div>";
+            $this->slides .= "<div class='dd-handle'>{$slide->name}" . ($slide->isYoutubeVideo() ? "<i class='pull-right fa fa-youtube'></i>" : ""). "</div>";
             $this->slides .= "<div><img class='img-responsive' src='" . ($slide->getImageUrl() ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_MEDIUM)) . "' /></div>";
             $this->slides .= '</li>';
         }

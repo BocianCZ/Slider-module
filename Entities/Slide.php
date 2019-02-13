@@ -51,6 +51,7 @@ class Slide extends Model
         'page_id',
         'position',
         'target',
+        'name',
         'title',
         'caption',
         'uri',
