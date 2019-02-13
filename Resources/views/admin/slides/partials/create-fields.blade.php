@@ -29,3 +29,9 @@
     {!! Form::text("external_image_url", old("external_image_url"), ['class' => 'form-control', 'placeholder' => trans('slider::sliders.form.placeholder.external image url')]) !!}
     {!! $errors->first("external_image_url", '<span class="help-block">:message</span>') !!}
 </div>
+
+<div class="form-group{{ $errors->has("youtube_video_url") ? ' has-error' : '' }}">
+    {!! Form::label("youtube_video_url", trans('slider::sliders.form.youtube video url')) !!}
+    {!! Form::text("youtube_video_url", old("youtube_video_url"), ['class' => 'form-control', 'placeholder' => trans('slider::sliders.form.placeholder.youtube video url')]) !!}
+    {!! $errors->first("youtube_video_url", '<span class="help-block">:message</span>') !!}
+</div>

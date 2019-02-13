@@ -23,6 +23,7 @@ return [
         'create slider' => 'Create slider',
     ],
     'table' => [
+        'status' => 'Status',
         'name' => 'Name',
         'system name' => 'System name',
     ],
@@ -35,8 +36,10 @@ return [
         'uri' => 'URI',
         'url' => 'URL',
         'external image url' => 'External Image URL',
+        'youtube video url' => 'Youtube Video URL',
         'placeholder' => [
             'external image url' => 'http://www.example.com/link/to/image.jpg',
+            'youtube video url' => 'https://www.youtube.com/watch?v=Ib4HUTxBfbA',
         ],
 
     ],

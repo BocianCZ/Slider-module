@@ -2,10 +2,10 @@
 
 ## IMPORTANT: Slider Module for AsgardCMS v1 and v2 is no longer maintained
 For Asgard v1, use `0.x` tagged releases, for Asgard v2 use `2.x` tagged releases.
-Please upgrade Asgard to v3 if you wish to use the latest features (see changelog in releases for details)
+Please upgrade Asgard to v3 if you wish to use the latest features (see [changelog in releases](https://github.com/BocianCZ/slider-module/releases) for details)
 
 ## Special Thanks
-to Nicolas Widart for AsgardCMS and his Menu Module, that was used as a foundation for the Slider Module.
+to Nicolas Widart for [AsgardCMS](https://github.com/AsgardCms) and his [Menu Module](https://github.com/AsgardCms/Menu), that was used as a foundation for the Slider Module.
 All other contributors to this module
 
 ## Installation
@@ -19,7 +19,7 @@ New Slider item will appear in the Sidebar
 ## Usage
 
 ### Prerequisites
-By default, Slider module is created using Bootstrap Carousel http://getbootstrap.com/javascript/#carousel
+By default, Slider module is created using [Bootstrap Carousel](https://getbootstrap.com/docs/4.0/components/carousel/)
 so make sure you have all prerequisites loaded for standard Bootstrap carousel (Bootstrap Carousel CSS and JS)
 
 ### Basic Usage
@@ -102,6 +102,18 @@ class HomepageController {
 
 then, inside of the `homepage.blade.php` template, you can render slider using `{!! Slider::render($mySlider) !!}`
 
+#### Using Youtube video on a slide background (Bootstrap4 only supported)
+You have the option to provide a Youtube video link for each slide. When using a default Bootstrap 4 template, this
+video will play on a background.
+
+If image is provided at the same time, it will be displayed as a slide background before the video player loads (delay
+is set to 2 seconds by default)
+
+All styles and javascripts are contained in the blade template (youtube-video-slide.blade.php)
+see https://www.powderkegwebdesign.com/implementing-youtube-background-videos/ for the original solution
+
+**!!! When using a video on the background, you can currently only use it on a single slide. Videos on more than one
+slide will not play !!!**
 
 ## Resources
 
