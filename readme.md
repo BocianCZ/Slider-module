@@ -12,8 +12,14 @@ All other contributors to this module
 You can install Slider module using composer:
 `composer require bociancz/slider-module`
 
-After the module is installed, you have to install Slider migrations `php artisan module:migrate Slider`
-and give yourself access in AsgardCMS (using Roles/Permissions). 
+After the module is installed, Slider migrations should be installed automatically, as well as frontend assets.
+If by any chance they are not, you can run commands manually:  
+
+* to install Slider migrations `php artisan module:migrate Slider` 
+* to publish frontend assets `php artisan module:publish Slider` 
+
+
+Do not forget to give yourself access in AsgardCMS (using Roles/Permissions). 
 New Slider item will appear in the Sidebar
 
 ## Usage
