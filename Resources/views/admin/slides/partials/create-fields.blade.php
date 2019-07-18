@@ -22,7 +22,13 @@
     </select>
 </div>
 
-@mediaSingle('slideImage')
+<div class="row">
+    @foreach (config('asgard.slider.config.slide-images') as $zone)
+        <div class="col-md-3 col-sm-4">
+            @mediaSingle($zone)
+        </div>
+    @endforeach
+</div>
 
 <div class="form-group{{ $errors->has("external_image_url") ? ' has-error' : '' }}">
     {!! Form::label("external_image_url", trans('slider::sliders.form.external image url')) !!}

@@ -19,4 +19,17 @@ return [
     | 'template' => 'slider::frontend.bootstrap.slider'
     */
     'template' => 'slider::frontend.bootstrap4.slider',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Slide Images
+    |--------------------------------------------------------------------------
+    | By default, there is a single image per slider. But sometimes it is useful
+    | to have multiple different images for slide, for example different image
+    | on hover effect, etc.
+    | this is just an array / list of different media zones that will be used
+    */
+    'slide-images' => [
+        'slideImage',
+    ]
 ];
