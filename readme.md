@@ -121,6 +121,29 @@ see https://www.powderkegwebdesign.com/implementing-youtube-background-videos/ f
 **!!! When using a video on the background, you can currently only use it on a single slide. Videos on more than one
 slide will not play !!!**
 
+#### Allow multiple images per slider
+Sometimes, it is useful to be able to upload multiple images per slide (for example for hover effect, etc.). Slider
+module is configurable to support this usecase:
+
+* first, publish configuration for the Slider module `php artisan module:publish-config Slider`. This will copy
+Slider module config files to `/config/asgard/slider/`
+* open `/config/asgard/slider/config.php` file
+* look for `slide-images` config block, by default looks like this:
+```php
+'slide-images' => [
+    'slideImage',
+]
+```
+* you can add more items in the `slide-images` array, and these will then be added to the create/edit slide form
+```php
+'slide-images' => [
+    'slideImage',
+    'slideImageHover',
+    'slideImageAlternative',
+]
+```
+(you will be able to attach three different images to each of your slides)
+
 ## Resources
 
 - [License](LICENSE.md)
