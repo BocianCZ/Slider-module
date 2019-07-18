@@ -138,11 +138,13 @@ Slider module config files to `/config/asgard/slider/`
 ```php
 'slide-images' => [
     'slideImage',
-    'slideImageHover',
-    'slideImageAlternative',
+    'slideImage_hover',
+    'slideImage_alternative',
 ]
 ```
 (you will be able to attach three different images to each of your slides)
+* you can then access images in your templates by calling `$slide->getImageUrl(1)`, where 1 is index of the attachment.
+* alternatively, you can also access image URL by specifying the zone `$slide->getImageUrlByZone('slideImage_hover')`
 
 ## Resources
 

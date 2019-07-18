@@ -70,9 +70,9 @@ class Slide extends Model
     private $linkUrl;
 
     /**
-     * @var string
+     * @var array
      */
-    private $imageUrl;
+    private $imageUrl = [];
 
     public function slider()
     {
@@ -97,19 +97,56 @@ class Slide extends Model
 
     /**
      * returns slider image src
+     *
+     * @param int $imageNumber
      * @return string|null full image path if image exists or null if no image is set
      */
-    public function getImageUrl()
+    public function getImageUrl(int $imageNumber = 0)
     {
-        if ($this->imageUrl === null) {
+        if (!isset($this->imageUrl[$imageNumber])) {
             if (!empty($this->external_image_url)) {
-                $this->imageUrl = $this->external_image_url;
-            } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
-                $this->imageUrl = $this->files[0]->path;
+                $this->imageUrl[$imageNumber] = $this->external_image_url;
+            } elseif (isset($this->files[$imageNumber]) && !empty($this->files[$imageNumber]->path)) {
+                $this->imageUrl[$imageNumber] = $this->files[$imageNumber]->path;
             }
         }
 
-        return $this->imageUrl;
+        return $this->imageUrl[$imageNumber] ?? null;
+    }
+
+    /**
+     * return actual File object of an image
+     * @param int $imageNumber
+     * @return mixed|File
+     */
+    public function getImage(int $imageNumber = 0)
+    {
+        if (isset($this->files[$imageNumber])) {
+            return $this->files[$imageNumber];
+        }
+    }
+
+    /**
+     * return actual File object of an image by zone name
+     * @param string $zone
+     * @return mixed|File
+     */
+    public function getImageByZone(string $zone)
+    {
+        return $this->filesByZone($zone)->first();
+    }
+
+    /**
+     * return actual File object of an image by zone name
+     * @param string $zone
+     * @return mixed|File
+     */
+    public function getImageUrlByZone(string $zone)
+    {
+        $file = $this->getImageByZone($zone);
+        if ($file) {
+            return $file->path;
+        }
     }
 
     /**
