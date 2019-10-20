@@ -9,6 +9,15 @@ to Nicolas Widart for [AsgardCMS](https://github.com/AsgardCms) and his [Menu Mo
 All other contributors to this module
 
 ## Installation
+
+### Using Asgard module downloader
+Module can be installed by running following command:
+`php artisan asgard:download:module bociancz/slider`
+
+Please DO NOT USE `bociancz/slider-module` as a package name when using Asgard module downloader. This will put module
+in `Modules/SliderModule` directory, which is not correct. Using `bociancz/slider` should do the trick.
+
+### Using Composer
 You can install Slider module using composer:
 `composer require bociancz/slider-module`
 
