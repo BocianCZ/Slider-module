@@ -11,7 +11,8 @@ class UpdateSliderRequest extends FormRequest
         $slider = $this->route()->parameter('slider__slider');
 
         return [
-            'name' => 'required',
+            'name' => "required|unique:slider__sliders,name,{$slider->id}",
+            'system_name' => "required|unique:slider__sliders,system_name,{$slider->id}",
             'primary' => "unique:slider__sliders,primary,{$slider->id}",
         ];
     }
@@ -25,7 +26,9 @@ class UpdateSliderRequest extends FormRequest
     {
         return [
             'name.required' => trans('slider::validation.name is required'),
+            'name.unique' => trans('slider::validation.name must be unique'),
             'system_name.required' => trans('slider::validation.system name is required'),
+            'system_name.unique' => trans('slider::validation.system name must be unique'),
         ];
     }
 }

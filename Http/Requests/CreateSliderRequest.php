@@ -9,8 +9,8 @@ class CreateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'system_name' => 'required',
+            'name' => 'required|unique:slider__sliders',
+            'system_name' => 'required|unique:slider__sliders',
         ];
     }
 
@@ -23,7 +23,9 @@ class CreateSliderRequest extends FormRequest
     {
         return [
             'name.required' => trans('slider::validation.name is required'),
+            'name.unique' => trans('slider::validation.name must be unique'),
             'system_name.required' => trans('slider::validation.system name is required'),
+            'system_name.unique' => trans('slider::validation.system name must be unique'),
         ];
     }
 }
