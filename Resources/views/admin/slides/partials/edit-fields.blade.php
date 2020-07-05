@@ -44,3 +44,10 @@
     {!! Form::text("youtube_video_url", old("youtube_video_url", $slide->youtube_video_url), ['class' => 'form-control', 'placeholder' => trans('slider::sliders.form.placeholder.youtube video url')]) !!}
     {!! $errors->first("youtube_video_url", '<span class="help-block">:message</span>') !!}
 </div>
+
+
+<div class="form-group{{ $errors->has("classes") ? ' has-error' : '' }}">
+    {!! Form::label("classes", trans('slider::sliders.form.classes')) !!}
+    {!! Form::text("classes", old("youtube_video_url", $slide->classes), ['class' => 'form-control']) !!}
+    {!! $errors->first("classes", '<span class="help-block">:message</span>') !!}
+</div>

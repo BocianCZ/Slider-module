@@ -41,11 +41,13 @@ return [
             'external image url' => 'http://www.example.com/link/to/image.jpg',
             'youtube video url' => 'https://www.youtube.com/watch?v=Ib4HUTxBfbA',
         ],
+        'classes' => 'CSS classes',
 
     ],
     'navigation' => [
         'back to index' => 'Go back to the slider index',
     ],
+
     'list resource' => 'List',
     'create resource' => 'Create',
     'edit resource' => 'Edit',
