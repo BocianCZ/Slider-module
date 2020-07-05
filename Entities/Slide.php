@@ -25,6 +25,7 @@ use Modules\Page\Entities\Page;
  * @property string $external_image_url
  * @property string $youtube_video_url
  * @property string $custom_html
+ * @property string $classes
  * @property File[]|Collection $files
  */
 class Slide extends Model
@@ -60,6 +61,7 @@ class Slide extends Model
         'external_image_url',
         'youtube_video_url',
         'custom_html',
+        'classes',
     ];
 
     protected $table = 'slider__slides';
