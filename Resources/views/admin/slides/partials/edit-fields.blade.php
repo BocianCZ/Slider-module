@@ -45,9 +45,8 @@
     {!! $errors->first("youtube_video_url", '<span class="help-block">:message</span>') !!}
 </div>
 
-
 <div class="form-group{{ $errors->has("classes") ? ' has-error' : '' }}">
     {!! Form::label("classes", trans('slider::sliders.form.classes')) !!}
-    {!! Form::text("classes", old("youtube_video_url", $slide->classes), ['class' => 'form-control']) !!}
+    {!! Form::text("classes", old("classes", $slide->classes), ['class' => 'form-control']) !!}
     {!! $errors->first("classes", '<span class="help-block">:message</span>') !!}
 </div>
