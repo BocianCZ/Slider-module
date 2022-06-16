@@ -2,6 +2,7 @@
 
 namespace Modules\Slider\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Events\BuildingSidebar;
 use Modules\Core\Events\LoadingBackendTranslations;
@@ -41,8 +42,8 @@ class SliderServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('sliders', array_dot(trans('slider::sliders')));
-            $event->load('slides', array_dot(trans('slider::slides')));
+            $event->load('sliders', Arr::dot(trans('slider::sliders')));
+            $event->load('slides', Arr::dot(trans('slider::slides')));
         });
     }
 
