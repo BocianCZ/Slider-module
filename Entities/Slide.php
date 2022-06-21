@@ -2,7 +2,6 @@
 
 namespace Modules\Slider\Entities;
 
-use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Modules\Media\Entities\File;
@@ -30,7 +29,7 @@ use Modules\Page\Entities\Page;
  */
 class Slide extends Model
 {
-    use Translatable, MediaRelation;
+    use \Modules\Core\Internationalisation\Translatable, MediaRelation;
 
     const YOUTUBE_THUMBNAIL_QUALITY_DEFAULT = 'default';
     const YOUTUBE_THUMBNAIL_QUALITY_STANDARD = 'sddefault';
