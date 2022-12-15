@@ -189,7 +189,11 @@ class Slide extends Model
 
     public function getYoutubeVideoThumbnail($quality = self::YOUTUBE_THUMBNAIL_QUALITY_DEFAULT)
     {
-        return 'https://img.youtube.com/vi/' . $this->getYoutubeVideoId() . '/' . $quality . '.jpg';
+        if ($this->getYoutubeVideoId()) {
+            return 'https://img.youtube.com/vi/' . $this->getYoutubeVideoId() . '/' . $quality . '.jpg';
+        }
+
+        return null;
     }
 
 
