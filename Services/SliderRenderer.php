@@ -4,6 +4,7 @@ namespace Modules\Slider\Services;
 
 use Illuminate\Support\Facades\URL;
 use Modules\Slider\Entities\Slide;
+use Modules\Slider\Entities\Slider;
 
 class SliderRenderer
 {
@@ -29,7 +30,7 @@ class SliderRenderer
      * @param $slides
      * @return string
      */
-    public function renderForSlider($slider, $slides)
+    public function renderForSlider(Slider $slider, $slides)
     {
         $this->sliderId = $slider->id;
 

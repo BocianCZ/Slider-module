@@ -1,4 +1,4 @@
-@foreach($slider->slides as $index => $slide)
+@foreach($slider->activeSlides as $index => $slide)
     <div class="carousel-item @if($index === 0) active @endif ">
         @if ($slide->isYoutubeVideo())
             @include('slider::frontend.bootstrap4.youtube-video-slide', ['slide' => $slide])

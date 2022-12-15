@@ -1,4 +1,4 @@
-@if(count($slider->slides) > 1)
+@if($slider->activeSlides->count() > 1)
     <ol class="carousel-indicators">
         @foreach($slider->slides as $index => $slide)
             <li data-target="#{{ $slider->system_name }}" data-slide-to="{{ $index }}"

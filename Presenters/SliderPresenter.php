@@ -11,11 +11,11 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
      * renders slider.
      * @param string|Slider $slider
      * pass Slider instance to render specific slider
-     * pass string to automatically retrieve slider from repository
-     * @param string $template blade template to render slider
+     * pass string to automatically retrieve slider from database
+     * @param ?string $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render($slider, $template = null)
+    public function render(Slider|string $slider, ?string $template = null): string
     {
         if ($template === null) {
             $template = config('asgard.slider.config.template');
@@ -23,7 +23,7 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
 
         if (!$slider instanceof Slider) {
             $slider = $this->getSliderFromRepository($slider);
-            if ($slider && $slider->active == false) {    // inactive slider must not render
+            if ($slider && $slider->active === false) {    // inactive slider must not render
                 return '';
             }
         }
@@ -39,11 +39,7 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
         return $view->render();
     }
 
-    /**
-     * @param $systemName
-     * @return Slider
-     */
-    private function getSliderFromRepository($systemName)
+    private function getSliderFromRepository(string $systemName): ?Slider
     {
         return $this->sliderRepository->findBySystemName($systemName);
     }

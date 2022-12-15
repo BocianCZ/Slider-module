@@ -2,11 +2,9 @@
 
 namespace Modules\Slider\Presenters;
 
+use Modules\Slider\Entities\Slider;
+
 interface SliderPresenterInterface
 {
-    /**
-     * @param string $sliderName
-     * @return string rendered slider
-     */
-    public function render($sliderName);
+    public function render(Slider|string $slider): string;
 }
