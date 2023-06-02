@@ -48,6 +48,12 @@ class EloquentSliderRepository extends EloquentBaseRepository implements SliderR
      */
     public function findBySystemName($systemName)
     {
-        return $this->model->where('system_name', '=', $systemName)->first();
+        return $this->model
+            ->where('system_name', '=', $systemName)
+            ->with([
+                'slides',
+                'slides.translations',
+            ])
+            ->first();
     }
 }
