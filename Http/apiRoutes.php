@@ -11,4 +11,10 @@ $router->group(['prefix' => '/slide'], function (Router $router) {
     $router->post('/delete', 'SlideController@delete')
         ->name('api.slider.slide.delete')
         ->middleware('token-can:slider.slides.destroy');
+
+});
+
+/** @var Router $router */
+$router->group(['prefix' => 'slider'], function (Router $router) {
+    $router->get('slider', 'SliderController@index')->name('api.slider.slider.index');
 });
