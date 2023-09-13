@@ -6,5 +6,5 @@ use Modules\Slider\Entities\Slider;
 
 interface SliderPresenterInterface
 {
-    public function render(Slider|string $slider): string;
+    public function render(Slider|string $slider, ?string $template, ?array $params): string;
 }

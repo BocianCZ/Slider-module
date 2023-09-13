@@ -15,7 +15,7 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
      * @param ?string $template blade template to render slider
      * @return string rendered slider HTML
      */
-    public function render(Slider|string $slider, ?string $template = null): string
+    public function render(Slider|string $slider, ?string $template = null, ?array $params = null): string
     {
         if ($template === null) {
             $template = config('asgard.slider.config.template');
@@ -34,6 +34,7 @@ class SliderPresenter extends AbstractSliderPresenter implements SliderPresenter
         $view = View::make($template)
             ->with([
                 'slider' => $slider,
+                'params' => $params,
             ]);
 
         return $view->render();
