@@ -20,6 +20,7 @@ use Modules\Page\Entities\Page;
  * @property string $caption
  * @property string $uri
  * @property string $url
+ * @property string $link_text
  * @property bool $active
  * @property string $external_image_url
  * @property string $youtube_video_url
@@ -42,6 +43,7 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
+        'link_text',
         'active',
         'custom_html',
     ];
@@ -56,6 +58,7 @@ class Slide extends Model
         'caption',
         'uri',
         'url',
+        'link_text',
         'active',
         'external_image_url',
         'youtube_video_url',

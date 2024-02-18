@@ -11,6 +11,7 @@ class SlideTranslation extends Model
         'caption',
         'uri',
         'url',
+        'link_text',
         'active',
         'custom_html',
     ];

@@ -66,8 +66,17 @@ class SliderRenderer
                     <i class="fas fa-circle {$activeSlideCLass}" style="font-size: 20px;margin-top: 5px; margin-right: 5px;"></i>
                 </div>
 HTML;
-            $this->slides .= "<div class='dd-handle'>{$slide->name}" . ($slide->isYoutubeVideo() ? "<i class='pull-right fa fa-youtube'></i>" : ""). "</div>";
-            $this->slides .= "<div><img class='img-responsive' src='" . ($slide->getImageUrl() ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_MEDIUM)) . "' /></div>";
+            $slideTitle = preg_replace('#<[^>]+>#', ' ', $slide->title);
+            $this->slides .= "<div class='dd-handle'>{$slide->name} &nbsp;&nbsp; / &nbsp;&nbsp; {$slideTitle}" . ($slide->isYoutubeVideo() ? "<i class='pull-right fa fa-youtube'></i>" : ""). "</div>";
+            $this->slides .= "<div>";
+
+            foreach ($slide->files as $fileIndex => $file) {
+                $this->slides .= "<div style='display: inline-block; margin-right: 5px'><img class='img-responsive' style='height: 150px; width: auto;' src='" . ($slide->getImageUrl($fileIndex) ?? $slide->getYoutubeVideoThumbnail($slide::YOUTUBE_THUMBNAIL_QUALITY_MEDIUM)) . "' /></div>";
+            }
+                
+                
+            
+            $this->slides .= "</div>";
             $this->slides .= '</li>';
         }
         $this->slides .= '</ol>';
