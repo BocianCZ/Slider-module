@@ -42,6 +42,7 @@ return [
             'youtube video url' => 'https://www.youtube.com/watch?v=Ib4HUTxBfbA',
         ],
         'classes' => 'CSS classes',
+        'link_text' => 'Link text',
 
     ],
     'navigation' => [

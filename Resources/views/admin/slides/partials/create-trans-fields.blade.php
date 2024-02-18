@@ -22,6 +22,12 @@
     {!! $errors->first("{$lang}[url]", '<span class="help-block">:message</span>') !!}
 </div>
 
+<div class="form-group{{ $errors->has("{$lang}[link_text]") ? ' has-error' : '' }}">
+    {!! Form::label("{$lang}[link_text]", trans('slider::sliders.form.link_text')) !!}
+    {!! Form::text("{$lang}[link_text]", old("{$lang}[link_text]"), ['class' => 'form-control', 'placeholder' => trans('slider::sliders.form.link_text')]) !!}
+    {!! $errors->first("{$lang}[link_text]", '<span class="help-block">:message</span>') !!}
+</div>
+
 <div class="checkbox">
     <label for="{{$lang}}[active]">
         <input id="{{$lang}}[active]"
