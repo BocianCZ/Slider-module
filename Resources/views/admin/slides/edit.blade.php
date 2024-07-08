@@ -40,7 +40,9 @@
                             <?php $i++; ?>
                             <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
                                 @include('slider::admin.slides.partials.edit-trans-fields', ['lang' => $locale])
-                                @include('bocian::admin.extra-data.fields', ['lang' => $locale, 'model' => $slide])
+                                @if (config('asgard.bocian.extra-data.enabled'))
+                                    @include('bocian::admin.extra-data.fields', ['lang' => $locale, 'model' => $slide])
+                                @endif
                             </div>
                         <?php endforeach; ?>
                     </div>
