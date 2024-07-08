@@ -2,10 +2,11 @@
 
 namespace Modules\Slider\Events;
 
+use Modules\Bocian\Contracts\StoringExtraData;
 use Modules\Media\Contracts\StoringMedia;
 use Modules\Slider\Entities\Slide;
 
-class SlideWasCreatedOrUpdated implements StoringMedia
+class SlideWasCreatedOrUpdated implements StoringMedia, StoringExtraData
 {
     /**
      * @var array

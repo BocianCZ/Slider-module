@@ -4,6 +4,7 @@ namespace Modules\Slider\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Modules\Bocian\Support\Eloquent\HasExtraData;
 use Modules\Media\Entities\File;
 use Modules\Media\Support\Traits\MediaRelation;
 use Modules\Page\Entities\Page;
@@ -31,6 +32,7 @@ use Modules\Page\Entities\Page;
 class Slide extends Model
 {
     use \Modules\Core\Internationalisation\Translatable, MediaRelation;
+    use HasExtraData;
 
     const YOUTUBE_THUMBNAIL_QUALITY_DEFAULT = 'default';
     const YOUTUBE_THUMBNAIL_QUALITY_STANDARD = 'sddefault';
