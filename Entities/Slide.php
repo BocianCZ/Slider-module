@@ -31,7 +31,8 @@ use Modules\Page\Entities\Page;
  */
 class Slide extends Model
 {
-    use \Modules\Core\Internationalisation\Translatable, MediaRelation;
+    use \Modules\Core\Internationalisation\Translatable;
+    use MediaRelation;
     use HasExtraData;
 
     const YOUTUBE_THUMBNAIL_QUALITY_DEFAULT = 'default';
